@@ -2,7 +2,7 @@ import json
 
 
 def list_data():
-    with open('student_data.txt', 'r') as file:
+    with open('C:\coding\WG\python course\\26-7\Student mini project\student_data.txt', 'r') as file:
         contents = json.load(file)
 
     for content in contents:

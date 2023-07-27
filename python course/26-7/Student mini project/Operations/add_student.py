@@ -1,4 +1,4 @@
-import json, os
+import json
 
 
 class Student:
@@ -17,13 +17,13 @@ class Student:
         }
         contents = []
 
-        file = open('student_data.txt', 'r')
+        file = open('C:\coding\WG\python course\\26-7\Student mini project\student_data.txt', 'r')
         contents = json.load(file)
         file.close()
 
         contents.append(data)
 
-        file = open('student_data.txt', 'w')
+        file = open('C:\coding\WG\python course\\26-7\Student mini project\student_data.txt', 'w')
         json.dump(contents, file)
         file.close()
 

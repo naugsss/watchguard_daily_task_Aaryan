@@ -6,7 +6,7 @@ def update_data():
 
     value_to_change = input("What do you wish to change name, email, phone : ")
     updated_value = input(f'Enter updated {value_to_change} : ')
-    with open('student_data.txt', 'r') as file:
+    with open('C:\coding\WG\python course\\26-7\Student mini project\student_data.txt', 'r') as file:
         contents = json.load(file)
 
     for content in contents:
@@ -14,6 +14,6 @@ def update_data():
             content[value_to_change] = updated_value
             print(f"{value_to_change} has been to {updated_value}")
 
-    file = open('student_data.txt', 'w')
+    file = open('C:\coding\WG\python course\\26-7\Student mini project\student_data.txt', 'w')
     json.dump(contents, file)
     file.close()

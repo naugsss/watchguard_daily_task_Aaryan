@@ -1,9 +1,9 @@
 import json
-from add_student import add_data
-from delete_student import delete_data
-from list_student import list_data
-from search_student import search_data
-from update_student import update_data
+from Operations.add_student import add_data
+from Operations.delete_student import delete_data
+from Operations.list_student import list_data
+from Operations.search_student import search_data
+from Operations.update_student import update_data
 
 
 def create_book_table():
@@ -27,10 +27,10 @@ def menu():
     print("6. Exit.")
     print(" ")
 
+
 menu()
 
 user_input = int(input("Enter your choice : "))
-
 
 while user_input != 6:
 
@@ -44,6 +44,7 @@ while user_input != 6:
         search_data()
     elif user_input == 5:
         list_data()
+    else:
+        print("Wrong input, please try again.")
     menu()
     user_input = int(input("Enter your choice : "))
-

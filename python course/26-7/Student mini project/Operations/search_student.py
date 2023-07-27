@@ -4,7 +4,7 @@ import json
 def search_data():
     user_input = input("Enter the user id of the student whom you want to search : ")
 
-    with open('student_data.txt', 'r') as file:
+    with open('C:\coding\WG\python course\\26-7\Student mini project\student_data.txt', 'r') as file:
         contents = json.load(file)
     flag = 0
     for content in contents:
