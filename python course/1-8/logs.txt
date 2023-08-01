@@ -1,0 +1,2 @@
+2023-08-01 10:14:34,803 WARNING  [loggin.py:5] This is a warning
+2023-08-01 10:14:34,804 INFO     [loggin.py:6] This is an info
