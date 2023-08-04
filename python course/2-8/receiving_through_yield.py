@@ -1,7 +1,8 @@
 def greet():
     friend = yield
+    print(friend)
     print(f'Hello, {friend}')
 
 g = greet()
-g.send(None) # priming the generator.
-g.send("Naugs")
+g.send("abc") # priming the generator.
+# g.send("Naugs")
