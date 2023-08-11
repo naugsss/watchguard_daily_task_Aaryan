@@ -15,7 +15,8 @@ def print_best_books():
         print(book)
 
 
-def print_cheapest_books():
+def print_cheapest_books()->None:
+
     best_books  = sorted(books, key = lambda x : x.price)[:10]
     for book in best_books:
         print(book)
