@@ -1,0 +1,5 @@
+fastapivenv
+alembic
+alembic.ini
+.env
+.idea

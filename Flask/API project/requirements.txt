@@ -1,0 +1,7 @@
+# it contains every python library that the project depends on
+
+flask 
+flask-smorest
+python-dotenv
+flask-sqlalchemy
+sqlalchemy
