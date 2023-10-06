@@ -1,22 +1,23 @@
+import os
+import models
+from dotenv import load_dotenv
 from starlette.responses import RedirectResponse
-
 from fastapi import Depends, HTTPException, status, APIRouter, Request, Response, Form
 from pydantic import BaseModel
 from typing import Optional
-import models
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from database import SessionLocal, engine
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from datetime import datetime, timedelta
 from jose import jwt, JWTError
-
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
+load_dotenv()
 
-SECRET_KEY = "KlgH6AzYDeZeGwD288to79I3vTHT8wp7"
-ALGORITHM = "HS256"
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 
 templates = Jinja2Templates(directory="templates")
 

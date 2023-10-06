@@ -1,12 +1,10 @@
 from starlette import status
 from starlette.responses import RedirectResponse
-
 from fastapi import Depends, APIRouter, Request, Form
 import models
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
 from .auth import get_current_user
-
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
