@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="output">Find and Replace</div>
+    Search For : <input type="text" id="search" /> <br />
+    Replace with : <input type="text" id="replace" /> <br />
+    <input type="button" onclick="lookUp()" value="Find and replace" />
+
+    <script>
+      function lookUp() {
+        var output = document.getElementById("output").innerText;
+        var searchText = document.getElementById("search").value;
+        var replaceText = document.getElementById("replace").value;
+
+        var regex = new RegExp(searchText, "gi");
+        console.log(regex);
+        var result = output.match(regex);
+        if (result) {
+          var replaced = output.replace(regex, replaceText);
+          document.getElementById("output").innerText = replaced;
+        }
+      }
+    </script>
+  </body>
+</html>

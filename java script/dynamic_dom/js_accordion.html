@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Complete JavaScript Course</title>
+    <style>
+      .content {
+        border: 1px solid black;
+        padding: 20px;
+        font-size: 0.8em;
+        display: none;
+      }
+
+      .outer-contenttent {
+        font-size: 1.5em;
+        background-color: #ddd;
+      }
+
+      .active {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="outer-contenttent">Information about JavaScript</div>
+    <div class="content">
+      Complete JavaScript Course Complete JavaScript Course Complete JavaScript
+      Course
+    </div>
+    <div class="outer-contenttent">More Read JavaScript</div>
+    <div class="content">Blah blah blah blah e</div>
+    <div class="outer-contenttent">More Read JavaScript</div>
+    <div class="content">Blah blah blah blah e</div>
+    <div class="outer-contenttent">More Read JavaScript</div>
+    <div class="content">Blah blah blah blah e</div>
+    <div class="outer-contenttent">More Read JavaScript</div>
+    <div class="content">Blah blah blah blah e</div>
+    <script>
+      var aTitle = document.querySelectorAll(".outer-contenttent");
+      var c = document.querySelectorAll(".content");
+      for (var x = 0; x < aTitle.length; x++) {
+        aTitle[x].onclick = function () {
+          ccontent(this.nextElementSibling);
+          this.nextElementSibling.classList.toggle("active");
+        };
+      }
+
+      function ccontent(t) {
+        for (var x = 0; x < c.length; x++) {
+          if (t != c[x]) {
+            c[x].classList.remove("active");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

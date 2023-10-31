@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="output">Switch statements</div>
+    <script>
+      var myTime = prompt("enter a time: ");
+      var output = document.getElementById("output");
+
+      var html;
+
+      switch (Number(myTime)) {
+        case 8:
+          html = "Wake up time";
+          break;
+        case 9:
+          html = "good morning";
+          break;
+        default:
+          html = "Nothing to do";
+          break;
+      }
+
+      output.innerHTML = html;
+    </script>
+  </body>
+</html>

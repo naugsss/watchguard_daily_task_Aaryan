@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="message">window open demo</div>
+    <input type="button" value="pop" onclick="popupWindow()" />
+    <input type="button" value="close" onclick="closePopup()" />
+    <script>
+      var openWindow;
+      function popupWindow() {
+        var url = "http://www.google.com";
+        openWindow = window.open(url, "_blank", "top=0, left=0");
+      }
+      function closePopup() {
+        openWindow.close();
+      }
+    </script>
+  </body>
+</html>

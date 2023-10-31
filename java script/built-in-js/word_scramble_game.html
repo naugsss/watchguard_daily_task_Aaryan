@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="message">Word scramble Game</div>
+    <input type="text" id="inputWord" />
+    <input type="button" value="Guess" onclick="guessWord()" />
+    <script>
+      var wordsArray = ["javascript", "hello", "namaste", "javascript"];
+      window.onload = shuffleWord;
+      var message = document.getElementById("message");
+      var originalWord;
+      function shuffleWord() {
+        var randomWord =
+          wordsArray[Math.floor(Math.random() * wordsArray.length)];
+        originalWord = randomWord;
+        randomWord = randomWord.toLowerCase();
+        var newWord = "";
+        var randomWordLength = randomWord.length;
+        for (var x = 0; x < randomWordLength; x++) {
+          var i = Math.floor(Math.random() * randomWord.length);
+          newWord += randomWord[i];
+          randomWord = randomWord.substr(0, i) + randomWord.substr(i + 1);
+        }
+        message.innerHTML = newWord;
+      }
+
+      function guessWord() {
+        var guessedWord = document.getElementById("inputWord").value;
+        if (guessedWord == originalWord) {
+          message.innerHTML = "You guessed it correct";
+        } else {
+          message.innerHTML =
+            "No, you made it wrong, the correct word is " + originalWord;
+        }
+      }
+    </script>
+  </body>
+</html>

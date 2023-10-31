@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas1 {
+        border: 3px dotted black;
+      }
+    </style>
+  </head>
+  <body>
+    Drawing on canvas
+    <canvas id="canvas1"></canvas>
+    <script>
+      let canva = document.getElementById("canvas1");
+      let context = canva.getContext("2d");
+      canva.width = 400;
+      canva.height = 600;
+      context.fillStyle = "#" + ((Math.random() * 0xffffff) << 0).toString(16);
+      context.fillRect(80, 80, 200, 100);
+      context.lineWidth = 10;
+      context.strokeStyle =
+        "#" + ((Math.random() * 0xffffff) << 0).toString(16);
+      context.strokeRect(10, 150, 200, 100);
+      context.moveTo(0, 400);
+      context.lineTo(400, 400);
+      context.stroke();
+    </script>
+  </body>
+</html>

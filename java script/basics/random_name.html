@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="output"></div>
+    <input type="button" onclick="myFunc()" value="Click me" />
+    <script>
+      var output = document.getElementById("output");
+      var adj = ["super", "wonderful", "awesome"];
+      function myFunc() {
+        var name = prompt("Enter your name : ");
+        output.innerHTML =
+          name +
+          " is a " +
+          adj[Math.floor(Math.random() * adj.length)] +
+          " person";
+      }
+    </script>
+  </body>
+</html>

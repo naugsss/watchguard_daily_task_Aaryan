@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="message"></div>
+    <input type="text" id="inputString" />
+    <input type="number" id="guessStringLength" />
+    <input type="button" value="Guess" onclick="checkGuess()" />
+    <script>
+      var message = document.getElementById("message");
+      function checkGuess() {
+        var userInput = document.getElementById("inputString").value;
+        var userGuess = document.getElementById("guessStringLength").value;
+
+        if (userInput.length == userGuess) {
+          message.innerHTML = "You guessed it right";
+        } else {
+          message.innerHTML =
+            "No, you are wrong, the correct length is " + userInput.length;
+        }
+      }
+    </script>
+  </body>
+</html>

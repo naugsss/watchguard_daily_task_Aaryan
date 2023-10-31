@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrapper">Page 1</div>
+    <img
+      id="imgSwap"
+      onmouseover="cimg(this)"
+      height="500px"
+      width="600px"
+      onmouseout="bimg(this)"
+    />
+
+    <script>
+      var imgHolder =
+        "https://imgv3.fotor.com/images/slider-image/a-man-holding-a-camera-with-image-filter.jpg";
+
+      window.onload = function () {
+        document.getElementById("imgSwap").src = imgHolder;
+      };
+
+      function cimg(t) {
+        console.log(event);
+        message(t.src);
+        imgHolder = t.src;
+        t.src =
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRneF6YlKoPHrVxJAnSHV5edlYqs0FSV8rIxA&usqp=CAU";
+      }
+
+      function bimg(t) {
+        t.src = imgHolder;
+      }
+
+      function message(m) {
+        document.getElementById("wrapper").innerHTML = m;
+      }
+    </script>
+  </body>
+</html>

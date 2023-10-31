@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="output">If else statements</div>
+    <script>
+      var myTime = prompt("enter a time in 24 hrs format");
+      var output = document.getElementById("output");
+
+      if (myTime < 12) {
+        output.innerHTML = "Wake up it is morning";
+      } else if (myTime >= 12 && myTime < 18) {
+        output.innerHTML = "have some food, it's afternoon";
+      } else if (myTime >= 18 && myTime < 20) {
+        output.innerHTML = "Have some snacks";
+      } else {
+        output.innerHTML = "It's time to sleep";
+      }
+    </script>
+  </body>
+</html>

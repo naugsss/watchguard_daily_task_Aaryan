@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Complete JavaScript Course</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div id="output">Complete JavaScript Course</div>
+    <script>
+      var output = document.getElementById("output");
+      var player = prompt("Do you choose Rock Paper or Scissors?");
+      var ps = player.charAt(0).toUpperCase();
+      var win = false;
+      var computer = Math.random();
+      if (computer < 0.34) {
+        computer = "Rock";
+      } else if (computer < 0.67) {
+        computer = "Paper";
+      } else {
+        computer = "Scissors";
+      }
+      var cs = computer.charAt(0).toUpperCase();
+      console.log(computer);
+      var html = "";
+      if (cs == ps) {
+        html += "Its a Tie";
+      } else {
+        if (ps == "R") {
+          player = "Rock";
+          if (cs == "S") {
+            win = true;
+          }
+        } else if (ps == "P") {
+          player = "Paper";
+          if (cs == "R") {
+            win = true;
+          }
+        } else {
+          player = "Scissors";
+          if (cs == "P") {
+            win = true;
+          }
+        }
+        if (win) {
+          html += " You Win";
+        } else {
+          html += " You Lost";
+        }
+      }
+      output.innerHTML =
+        "You      vs    Computer<br>" +
+        player +
+        " vs " +
+        computer +
+        "<br>" +
+        html;
+    </script>
+  </body>
+</html>

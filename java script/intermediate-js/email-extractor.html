@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="output">Email extractor</div>
+    <form name="emailValidator">
+      <textarea name="textarea" cols="100" rows="12"></textarea>
+      <input type="button" onclick="lookUp()" value="Get emails" />
+      <textarea name="textarea2" cols="100" rows="12"></textarea>
+    </form>
+
+    <script>
+      function lookUp() {
+        var input = document.emailValidator.textarea.value;
+        var emailData = input.match(
+          /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z.]+)/gi
+        );
+        var html = "";
+        var holder = [];
+        for (var email = 0; email < emailData.length; email++) {
+          if (holder.indexOf(emailData[email])) {
+            holder.push(emailData[email]);
+          }
+        }
+        document.emailValidator.textarea2.value = holder.join("|");
+      }
+    </script>
+  </body>
+</html>

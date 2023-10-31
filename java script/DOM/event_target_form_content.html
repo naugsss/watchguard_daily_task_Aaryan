@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrapper">Page 1</div>
+    <form action="">
+      First Name : <input type="text" id="e1" value="Mike" /><br />
+      Second Name : <input type="text" id="e2" value="John" /><br />
+      <input type="button" onclick="sendInfo()" value="Submit" />
+    </form>
+
+    <script>
+      function sendInfo() {
+        console.dir(event.target.parentElement.e1.value);
+        message("Test");
+      }
+      function message(m) {
+        document.getElementById("wrapper").innerHTML = m;
+      }
+    </script>
+  </body>
+</html>

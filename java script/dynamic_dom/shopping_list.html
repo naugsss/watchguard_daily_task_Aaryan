@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #header {
+        color: rgb(0, 179, 255);
+        text-align: center;
+        padding-bottom: 15px;
+        border-bottom: 3px solid black;
+      }
+      #searchBar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      #output {
+        color: green;
+        flex-direction: column;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 id="header">Shopping list</h1>
+      <div id="searchBar">
+        <input type="text" id="itemName" />
+        <input type="button" id="addItem" value="Add to List" />
+      </div>
+    </div>
+    <div id="output">
+      <ol id="shoppingList"></ol>
+    </div>
+    <script>
+      document.getElementById("addItem").onclick = function () {
+        addNewItem();
+      };
+
+      function addNewItem() {
+        var item = document.getElementById("itemName").value;
+        var listItem = document.createElement("li");
+        listItem.appendChild(document.createTextNode(item));
+        shoppingList = document.getElementById("shoppingList");
+        shoppingList.appendChild(listItem);
+      }
+    </script>
+  </body>
+</html>

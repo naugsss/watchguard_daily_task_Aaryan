@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="output">Regex Validation</div>
+    <input type="button" onclick="validateRegex()" value="validate" />
+    <input type="text" id="email" value="email@gmail.com" />
+    <input type="text" id="number" value="123321" />
+    <input type="text" id="char" value="characters" />
+    <script>
+      var output = document.getElementById("output");
+      var str = "abcd12341234 1234";
+      //   function validateData() {
+      //     var regex = /ABCd/gi;
+      //     // here i is for case independent
+      //     // if we want to return back all the matches we use g
+      //     var isMatch = str.match(regex);
+      //     console.log(isMatch);
+      //   }
+
+      function validateEmail(e) {
+        var email = document.getElementById("email").value;
+        var pattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z.]+)/gi;
+        var isMatch = e.match(pattern);
+        return isMatch == null ? false : true;
+        console.log(isMatch);
+      }
+      function validateNumber(e) {
+        var pattern = /\D/;
+        var isMatch = e.match(pattern);
+        return isMatch == null ? true : false;
+      }
+      function validateChar(e) {
+        var pattern = /[^A-Za-z]/gi;
+        var isMatch = e.match(pattern);
+        return isMatch == null ? true : false;
+      }
+
+      function validateRegex() {
+        var input = document.getElementsByTagName("input");
+        for (var x = 0; x < input.length; x++) {
+          if (input[x].type == "text") {
+            if (input[x].id == "email") {
+              if (validateEmail(input[x].value)) {
+                console.log("valid email");
+              } else {
+                console.log("invalid email");
+              }
+            }
+            if (input[x].id == "number") {
+              if (validateNumber(input[x].value)) {
+                console.log("valid number");
+              } else{
+                console.log("invalid number")
+              }
+            }
+            if (input[x].id == "char") {
+              if (validateChar(input[x].value)) {
+                console.log("valid char");
+              } else{
+                console
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

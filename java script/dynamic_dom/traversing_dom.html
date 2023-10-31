@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" name="myForm">
+      <input type="url" id="url" name="url" />
+      <input type="text" id="first" name="first" />
+      <input type="text" id="last" name="last" />
+      <textarea class="output" name="output" id="output"></textarea>
+      <div id="another">
+        Parent
+        <div id="one">1</div>
+        <div id="two">2</div>
+        <div id="three">3</div>
+        <div id="four">4</div>
+        <div id="five">5</div>
+        <div id="six">6</div>
+        <div id="seven">7</div>
+        <div id="eight">8</div>
+      </div>
+      <input type="button" id="btn1" onclick="myFun1()" value="Click Here" />
+    </form>
+    <script>
+      var usingId = document.getElementById("output");
+      var usingClass = document.getElementsByClassName("output");
+      console.log(usingClass);
+      console.log(usingId);
+    </script>
+  </body>
+</html>
