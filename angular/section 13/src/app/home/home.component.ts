@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, interval, of } from 'rxjs';
 import { Observable } from 'rxjs-compat';
-import { filter } from 'rxjs-compat/operator/filter';
-import { map } from 'rxjs-compat/operator/map';
+import { filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +11,6 @@ import { map } from 'rxjs-compat/operator/map';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private firstObsSubscription: Subscription;
-
-  obs = new Observable((observer) => {
-    // console.log('observer starts');
-    observer.next(1);
-    observer.next(2);
-    observer.next(3);
-    // observer.error('error occured');
-    observer.complete();
-    observer.next(4);
-  });
-
-  constructor() {}
 
   // ngOnInit(): void {
   //   this.obs.subscribe({
@@ -37,12 +25,32 @@ export class HomeComponent implements OnInit, OnDestroy {
   //     },
   //   });
   // }
+  constructor() {}
 
   ngOnInit(): void {
-    this.firstObsSubscription = this.obs.subscribe({
+    const obs = new Observable((observer) => {
+      // console.log('observer starts');
+      observer.next(6);
+      observer.next(2);
+      observer.next(3);
+      // observer.error('error occured');
+      observer.complete();
+      observer.next(4);
+    });
+    const pipedObservable = obs.filter((data: number) => {
+      return data % 2 == 0;
+    });
+
+    // const pipedObservable = obs.pipe(
+    //   filter((data: number) => {
+    //     return data % 2 == 0;
+    //   })
+    // );
+
+    this.firstObsSubscription = pipedObservable.subscribe({
       next: (value) => {
         setTimeout(() => {
-          // console.log(value);
+          console.log(value);
         }, 4000);
       },
       error: (err) => console.log(err),

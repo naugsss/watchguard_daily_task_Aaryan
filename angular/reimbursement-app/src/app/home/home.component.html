@@ -1,0 +1,56 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div
+    id="user-data"
+    class="px-3 pt-1"
+    *ngFor="let inputField of inputData; let idForm = index"
+  >
+    <input
+      type="text"
+      id="id"
+      ngModel
+      name="id"
+      placeholder="Enter ID"
+      class="px-3 mx-3"
+      #id="ngModel"
+      required
+      [(ngModel)]="inputField[i]"
+    />
+    <input
+      type="text"
+      name="name"
+      id="name"
+      ngModel
+      placeholder="Enter your name"
+      class="px-3 mx-3"
+      #name="ngModel"
+      required
+    />
+    <input
+      type="number"
+      name="amount"
+      id="amount"
+      ngModel
+      placeholder="Enter amount"
+      class="px-3 mx-3"
+      #amount="ngModel"
+      required
+    />
+    <select name="Type" id="Type" ngModel class="px-3 mx-3">
+      <option value="" selected disabled>Select a mode</option>
+      <option value="debit">Debit</option>
+      <option value="credit">Credit</option>
+    </select>
+    <button class="btn btn-danger">Delete</button>
+  </div>
+
+  <button class="btn btn-primary px-3 mx-3" (click)="onAdd()">ADD</button>
+
+  <button
+    type="submit"
+    value="submit"
+    class="btn btn-success px-3 mx-3"
+    (click)="onSave()"
+  >
+    Save
+  </button>
+</form>
