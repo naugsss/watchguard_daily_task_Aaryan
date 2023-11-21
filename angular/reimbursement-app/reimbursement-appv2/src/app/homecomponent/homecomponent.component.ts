@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+
 import { AppModel } from 'src/app/app.model';
 import { AppService } from 'src/app/app.service';
-import { ReimbursementModel } from '../reimbursement.model';
 
 @Component({
   selector: 'app-homecomponent',
@@ -9,24 +9,28 @@ import { ReimbursementModel } from '../reimbursement.model';
   styleUrls: ['./homecomponent.component.css'],
 })
 export class HomecomponentComponent {
-  reimbursements: ReimbursementModel[];
-  savedReimbursements: AppModel[];
-  showInputs: boolean = false;
+  userData: AppModel;
 
-  constructor(private reimbursementService: AppService) {
-    this.reimbursements = reimbursementService.reimbursement;
+  constructor(private reimbursementService: AppService) {}
+
+  ngOnInit() {
+    this.userData = this.reimbursementService.employeeData;
   }
+
   addReimbursement() {
-    this.showInputs = true;
-    this.reimbursements.push(new ReimbursementModel('', '', null, ''));
+    this.userData.reimbursement.push({
+      id: '',
+      name: '',
+      amount: null,
+      type: '',
+    });
   }
 
   onSubmit() {
-    this.reimbursementService.reimbursement = this.reimbursements;
-    this.reimbursementService.newSubject.next(true);
+    this.reimbursementService.newSubject.next(this.userData);
   }
 
   deleteReimbursement(index: number) {
-    this.reimbursementService.deleteReimbursement(index);
+    this.reimbursementService.employeeData.reimbursement.splice(index, 1);
   }
 }

@@ -1,18 +1,28 @@
-<h4>Saved Reimbursements:</h4>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let savedSet of savedReimbursements">
-      <td *ngFor="let reimbursement of object.keys(savedSet)">
-        {{ savedSet[reimbursement] }}
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="mt-5 container">
+  <h2>User Details</h2>
+  <p>Employe ID : {{ userDetails.empId }}</p>
+  <p>Employe name : {{ userDetails.empName }}</p>
+  <p>Employe Designation : {{ userDetails.empDesg }}</p>
+</div>
+
+<div class="mt-5 container">
+  <h4>Saved Reimbursements:</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reimbursement of userDetails.reimbursement">
+        <td>{{ reimbursement.id }}</td>
+        <td>{{ reimbursement.name }}</td>
+        <td>{{ reimbursement.amount }}</td>
+        <td>{{ reimbursement.type }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
