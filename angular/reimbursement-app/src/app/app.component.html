@@ -5,39 +5,36 @@
 
   <div *ngIf="showInputs" class="mt-3">
     <h4>Enter Reimbursements:</h4>
-    <form #reimbursementForm="ngForm">
+    <form #reimbursementForm="ngForm" (ngSubmit)="onSubmit()">
       <div *ngFor="let reimbursement of reimbursements; let i = index">
-        <label for="id{{ i }}">ID:</label>
         <input
           type="number"
           class="form-control"
           id="id{{ i }}"
           name="id{{ i }}"
           [(ngModel)]="reimbursement.id"
-          required
+          placeholder="Enter ID"
         />
-        <label for="name{{ i }}">Name:</label>
         <input
           type="text"
           class="form-control"
           id="name{{ i }}"
           name="name{{ i }}"
           [(ngModel)]="reimbursement.name"
-          required
+          placeholder="Enter Name"
         />
-        <label for="amount{{ i }}">Amount:</label>
         <input
           type="number"
           class="form-control"
           id="amount{{ i }}"
           name="amount{{ i }}"
           [(ngModel)]="reimbursement.amount"
-          required
+          placeholder="Enter Amount"
         />
-        <label for="type{{ i }}">Type:</label>
         <select
-          name="type{{ i }}"
+          name="type"
           id="type{{ i }}"
+          placeholder="Choose one"
           [(ngModel)]="reimbursement.type"
           class="form-control"
         >
@@ -53,15 +50,10 @@
           Delete
         </button>
       </div>
+      <button type="submit" class="btn btn-success mt-3">
+        Save Reimbursements
+      </button>
     </form>
-
-    <button
-      type="button"
-      class="btn btn-success mt-3"
-      (click)="saveReimbursements()"
-    >
-      Save Reimbursements
-    </button>
   </div>
 
   <div *ngIf="savedReimbursements.length > 0" class="mt-5">

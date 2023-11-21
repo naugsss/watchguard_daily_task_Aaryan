@@ -11,17 +11,32 @@ export class AppComponent {
   savedReimbursements: any[] = [];
   showInputs: boolean = false;
 
+  id: string = '';
+  name: string = '';
+  amount: string = '';
+  type: string = '';
+
+  @ViewChild('reimbursementForm') form: NgForm;
+
   addReimbursement() {
     this.showInputs = true;
     this.reimbursements.push({});
   }
 
-  saveReimbursements() {
+  onSubmit() {
     if (this.reimbursements.length > 0) {
       this.savedReimbursements.push([...this.reimbursements]);
+      // this.showInputs = false;
+      console.log('inside saved reimbursmenets');
+      console.log(this.reimbursements);
+      console.log(this.savedReimbursements);
       this.reimbursements = [];
-      this.showInputs = false;
     }
+    console.log(this.form);
+    console.log(this.id);
+    console.log(this.name);
+    console.log(this.amount);
+    console.log(this.type);
   }
 
   deleteReimbursement(index: number) {
