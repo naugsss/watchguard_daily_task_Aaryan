@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  
+
+  <div *ngIf="showInputs" class="mt-3">
+    <h4>Enter Reimbursements:</h4>
+    <form #reimbursementForm="ngForm" (ngSubmit)="onSubmit()">
+      <div *ngFor="let reimbursement of reimbursements; let i = index">
+        <input
+          type="number"
+          class="form-control"
+          name="id{{ i }}"
+          [(ngModel)]="reimbursement.id"
+          placeholder="Enter ID"
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="name{{ i }}"
+          [(ngModel)]="reimbursement.name"
+          placeholder="Enter Name"
+        />
+        <input
+          type="number"
+          class="form-control"
+          name="amount{{ i }}"
+          [(ngModel)]="reimbursement.amount"
+          placeholder="Enter Amount"
+        />
+        <select
+          name="type{{ i }}"
+          placeholder="Choose one"
+          [(ngModel)]="reimbursement.type"
+          class="form-control"
+        >
+          <option value="" selected disabled>Select a mode</option>
+          <option value="debit">Debit</option>
+          <option value="credit">Credit</option>
+        </select>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteReimbursement(i)"
+        >
+          Delete
+        </button>
+      </div>
+      <button type="submit" class="btn btn-success mt-3">
+        Save Reimbursements
+      </button>
+    </form>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="addReimbursement()">
+    Add Reimbursement
+  </button>
+</div>

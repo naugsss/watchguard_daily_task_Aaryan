@@ -1,0 +1,18 @@
+<h4>Saved Reimbursements:</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let savedSet of savedReimbursements">
+      <td *ngFor="let reimbursement of object.keys(savedSet)">
+        {{ savedSet[reimbursement] }}
+      </td>
+    </tr>
+  </tbody>
+</table>

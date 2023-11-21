@@ -10,7 +10,6 @@
         <input
           type="number"
           class="form-control"
-          id="id{{ i }}"
           name="id{{ i }}"
           [(ngModel)]="reimbursement.id"
           placeholder="Enter ID"
@@ -18,7 +17,6 @@
         <input
           type="text"
           class="form-control"
-          id="name{{ i }}"
           name="name{{ i }}"
           [(ngModel)]="reimbursement.name"
           placeholder="Enter Name"
@@ -26,14 +24,12 @@
         <input
           type="number"
           class="form-control"
-          id="amount{{ i }}"
           name="amount{{ i }}"
           [(ngModel)]="reimbursement.amount"
           placeholder="Enter Amount"
         />
         <select
-          name="type"
-          id="type{{ i }}"
+          name="type{{ i }}"
           placeholder="Choose one"
           [(ngModel)]="reimbursement.type"
           class="form-control"
