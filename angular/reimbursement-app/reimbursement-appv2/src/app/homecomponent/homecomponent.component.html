@@ -1,4 +1,5 @@
 <div class="container mt-5">
+  <h1 class="mb-3">Reimbursement APP</h1>
   <h4>Enter Reimbursements:</h4>
   <form #reimbursementForm="ngForm" (ngSubmit)="onSubmit()">
     <div ngModelGroup="userData" class="row">
@@ -30,11 +31,7 @@
         />
       </div>
     </div>
-    <!-- <div>
-      <p>Employee ID : {{ emp_id }}</p>
-      <p>Employee Name : {{ emp_name }}</p>
-      <p>Employee Designation : {{ emp_desg }}</p>
-    </div> -->
+
     <div class="mt-3" ngModelGroup="userDetails">
       <div
         class="row mt-2"
@@ -85,7 +82,7 @@
             type="button"
             class="btn btn-danger"
             (click)="deleteReimbursement(i)"
-            [ngClass]="{ 'display-none': userData.reimbursement.length == 1 }"
+            [ngClass]="{ 'display-none': userData.reimbursement.length === 1 }"
           >
             Delete
           </button>

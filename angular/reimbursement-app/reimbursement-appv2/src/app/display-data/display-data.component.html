@@ -1,11 +1,9 @@
-<div class="mt-5 container">
-  <h2>User Details</h2>
+<div class="mt-5 container" *ngIf="userDetails">
+  <h4>User Details:</h4>
   <p>Employe ID : {{ userDetails.empId }}</p>
   <p>Employe name : {{ userDetails.empName }}</p>
   <p>Employe Designation : {{ userDetails.empDesg }}</p>
-</div>
-
-<div class="mt-5 container">
+  <hr />  
   <h4>Saved Reimbursements:</h4>
   <table class="table table-bordered">
     <thead>
