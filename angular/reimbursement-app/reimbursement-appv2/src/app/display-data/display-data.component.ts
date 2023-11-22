@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AppService } from '../app.service';
 import { AppModel } from '../app.model';
 
@@ -13,7 +14,7 @@ export class DisplayDataComponent implements OnInit {
   constructor(private reimbursementService: AppService) {}
 
   ngOnInit(): void {
-    this.reimbursementService.newSubject.subscribe(() => {
+    this.reimbursementService.userSubject.subscribe(() => {
       this.userDetails = JSON.parse(
         JSON.stringify(this.reimbursementService.employeeData)
       );

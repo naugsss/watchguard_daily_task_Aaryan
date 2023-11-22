@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HomecomponentComponent } from './homecomponent/homecomponent.component';
 import { DisplayDataComponent } from './display-data/display-data.component';
-import { FormsModule } from '@angular/forms';
+import { HomecomponentComponent } from './home-component/home-component.component';
 
 @NgModule({
   declarations: [AppComponent, HomecomponentComponent, DisplayDataComponent],

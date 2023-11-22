@@ -30,8 +30,4 @@ export class AppComponent implements OnInit {
   get controls() {
     return (this.signupForm.get('hobbies') as FormArray).controls;
   }
-
-
-  
-
 }

@@ -4,9 +4,9 @@ import { AppModel } from 'src/app/app.model';
 import { AppService } from 'src/app/app.service';
 
 @Component({
-  selector: 'app-homecomponent',
-  templateUrl: './homecomponent.component.html',
-  styleUrls: ['./homecomponent.component.css'],
+  selector: 'app-home-component',
+  templateUrl: './home-component.component.html',
+  styleUrls: ['./home-component.component.css'],
 })
 export class HomecomponentComponent {
   userData: AppModel;
@@ -17,17 +17,17 @@ export class HomecomponentComponent {
     this.userData = this.reimbursementService.employeeData;
   }
 
+  onSubmit() {
+    this.reimbursementService.userSubject.next(this.userData);
+  }
+
   addReimbursement() {
     this.userData.reimbursement.push({
-      id: '',
+      id: null,
       name: '',
       amount: null,
       type: '',
     });
-  }
-
-  onSubmit() {
-    this.reimbursementService.newSubject.next(this.userData);
   }
 
   deleteReimbursement(index: number) {
