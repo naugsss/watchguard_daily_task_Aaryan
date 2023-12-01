@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h1 class="mb-3">Reimbursement APP</h1>
   <h4>Enter Reimbursements:</h4>
-  <form #reimbursementForm="ngForm" (ngSubmit)="onSubmit()">
+  <form #reimbursementForm="ngForm" (ngSubmit)="onSubmit(reimbursementForm)">
     <div ngModelGroup="userData" class="row">
       <div class="col">
         <input
@@ -49,6 +49,7 @@
             type="number"
             name="id{{ i }}"
             [(ngModel)]="reimbursement.id"
+            #name="ngModel"
             placeholder="Enter ID"
             required
           />
@@ -58,6 +59,7 @@
             class="form-control"
             type="text"
             name="name{{ i }}"
+            #name="ngModel"
             [(ngModel)]="reimbursement.name"
             placeholder="Enter Name"
             required
@@ -68,6 +70,7 @@
             class="form-control"
             type="number"
             name="amount{{ i }}"
+            #name="ngModel"
             [(ngModel)]="reimbursement.amount"
             placeholder="Enter Amount"
             required

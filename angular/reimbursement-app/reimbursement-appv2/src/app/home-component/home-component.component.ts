@@ -17,8 +17,9 @@ export class HomecomponentComponent {
     this.userData = this.reimbursementService.employeeData;
   }
 
-  onSubmit() {
+  onSubmit(reimbursementForm) {
     this.reimbursementService.userSubject.next(this.userData);
+    console.log(reimbursementForm);
   }
 
   addReimbursement() {

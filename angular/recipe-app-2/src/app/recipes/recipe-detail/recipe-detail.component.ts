@@ -20,8 +20,6 @@ export class RecipeDetailComponent implements OnInit {
       this.recipeId = +data['id'];
       this.recipe = this.recipeService.getRecipe(this.recipeId);
     });
-
-    console.log(this.recipeId);
   }
 
   onAddToShoppingList() {
@@ -30,6 +28,6 @@ export class RecipeDetailComponent implements OnInit {
 
   onDeleteRecipe() {
     this.recipeService.deleteRecipe(this.recipeId);
-    this.router.navigate(['/recipes'])
+    this.router.navigate(['/recipes']);
   }
 }
