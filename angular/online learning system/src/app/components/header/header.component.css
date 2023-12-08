@@ -1,0 +1,22 @@
+.page-header {
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+  align-items: space-around;
+  padding: 15px 50px;
+  background-color: #161d29;
+  border-bottom: 1px solid #2c333f;
+}
+
+a:hover {
+  color: #afb2bf86;
+  font-weight: 600;
+}
+
+.page-header-nav > a,
+.page-header-login-logout > a {
+  color: #afb2bf;
+  text-decoration: none;
+  padding: 20px;
+  font-size: 20px;
+}

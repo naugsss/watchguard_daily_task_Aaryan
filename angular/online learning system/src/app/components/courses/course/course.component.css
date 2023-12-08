@@ -1,0 +1,47 @@
+.card {
+  background-color: #161d29;
+  color: white;
+}
+.card-text {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.buy-now {
+  background-color: rgba(255, 214, 10, 0.882);
+  padding: 10px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin-left: 25px;
+}
+
+.add-to-cart {
+  background-color: rgba(255, 214, 10, 0.882);
+  padding: 10px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.course {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 50px;
+  margin-top: 50px;
+}
+
+.purchase-options {
+  margin-top: 20px;
+}
+
+.stars {
+  color: rgba(255, 214, 10, 0.882);
+}
+
+.star {
+  margin-left: 3px;
+}

@@ -1,0 +1,49 @@
+.container {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background-color: #161d29;
+  width: 60%;
+  color: white;
+  display: flex;
+  gap: 50px;
+}
+
+.card-block {
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #161d29;
+  margin-left: 15%;
+  color: white;
+}
+.card-text {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.buy-now {
+  background-color: rgba(255, 214, 10, 0.882);
+  padding: 10px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.purchase-options {
+  margin-top: 20px;
+}
+
+.stars {
+  color: rgba(255, 214, 10, 0.882);
+}
+
+.star {
+  margin-left: 3px;
+}
