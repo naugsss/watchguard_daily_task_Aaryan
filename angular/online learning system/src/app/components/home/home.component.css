@@ -74,15 +74,6 @@ hr {
   display: flex;
 }
 
-.course-card {
-  margin: 10px;
-  gap: 30px;
-  height: 300px;
-  width: 300px;
-  background-color: #161d29;
-  color: white;
-}
-
 .course-feedback {
   margin: 0 30px;
   height: 200px;

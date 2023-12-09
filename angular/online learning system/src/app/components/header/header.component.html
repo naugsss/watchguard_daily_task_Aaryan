@@ -19,6 +19,11 @@
     </div>
   </div>
   <div class="page-header-login-logout">
-    <a routerLink="login">Log In</a>
+    <button class="login-btn" routerLink="login" *ngIf="!isAuthenticated">
+      Log In
+    </button>
+    <button class="logout-btn" *ngIf="isAuthenticated" (click)="onLogout()">
+      Log Out
+    </button>
   </div>
 </div>

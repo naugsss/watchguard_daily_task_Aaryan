@@ -1,3 +1,7 @@
 export class User {
-  constructor(public username: string, private _token: string) {}
+  constructor(
+    public username: string,
+    public role: number,
+    public token: string
+  ) {}
 }

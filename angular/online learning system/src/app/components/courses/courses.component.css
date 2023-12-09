@@ -1,20 +1,20 @@
 .container {
   margin: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
 }
 
 .course-section {
-  display: flex;
-  width: 100%;
+  margin-top: 50px;
 }
 
 .filter {
-  height: 50%;
-  width: 400px;
-  margin: 50px 30px;
-  top: 40%;
+  height: 40vh;
+  width: 20%;
+  margin: 8% 30px;
   background-color: #161d29;
-  overflow-x: hidden;
-  padding-top: 20px;
 }
 
 input[type="text"],
@@ -46,12 +46,17 @@ select {
 }
 
 .courses {
-  margin-top: 50px;
-  margin-left: 15%;
-  width: 100%;
+  width: 80%;
 }
 
 .course {
   display: flex;
   flex-wrap: wrap;
+}
+
+.course-container {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-items: center;
 }

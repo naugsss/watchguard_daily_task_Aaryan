@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
-import { Observable } from 'rxjs';
-import { AuthResponseData, AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -24,11 +23,8 @@ export class LoginComponent {
     this.isLoading = true;
 
     console.log(authForm);
-    let authObs: Observable<AuthResponseData>;
 
-    authObs = this.authService.login(username, password);
-
-    authObs.subscribe({
+    this.authService.login(username, password).subscribe({
       next: (response) => {
         console.log('response', response);
         this.isLoading = false;

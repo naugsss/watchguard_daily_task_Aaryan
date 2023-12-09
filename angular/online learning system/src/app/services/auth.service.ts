@@ -1,22 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { Subject, throwError } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
+
 import { User } from '../components/login/user.model';
-export interface AuthResponseData {
+import { Router } from '@angular/router';
+
+interface AuthResponseData {
   code: number;
   message: string;
   status: string;
   token: string;
 }
 
+interface loginResponse {
+  role: number;
+  userid: number;
+  expire: number;
+  username: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
 
   login(username: string, password: string) {
     return this.http
@@ -25,8 +36,10 @@ export class AuthService {
         password: password,
       })
       .pipe(
+        catchError(this.handleError),
         tap((response) => {
-          catchError(this.handleError), console.log(response);
+          console.log(response);
+          this.handleLogin(response);
         })
       );
   }
@@ -47,8 +60,47 @@ export class AuthService {
       );
   }
 
-  handleLogin(userId: string, token: string) {
-    const user = new User(userId, token);
+  logout() {
+    // this.courseService.getCourses().subscribe({
+    //   next: (response) => {
+    //     console.log('response', response);
+    //   },
+    //   error: (error) => {
+    //     console.log(error);
+    //   },
+    // });
+    this.user.next(null);
+    this.router.navigate(['/login']);
+    localStorage.removeItem('userData');
+  }
+
+  autoLogin() {
+    const userData: {
+      username: string;
+      role: number;
+      token: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
+      return;
+    }
+
+    const loadedUser = new User(
+      userData.username,
+      userData.role,
+      userData.token
+    );
+    if (loadedUser.token) {
+      this.user.next(loadedUser);
+    }
+  }
+
+  handleLogin(response: any) {
+    const jwt_token = response['access_token'];
+    const decodedToken: loginResponse = jwtDecode(jwt_token, { header: true });
+
+    const role = decodedToken['role'];
+    const username = decodedToken['username'];
+    const user = new User(username, role, jwt_token);
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
   }

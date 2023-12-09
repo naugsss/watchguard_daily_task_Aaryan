@@ -5,12 +5,17 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AuthGuard } from './components/login/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'courses', component: CoursesComponent },
+  {
+    path: 'courses',
+    component: CoursesComponent,
+    // canActivate: [AuthGuard]
+  },
   { path: 'cart', component: CartComponent },
 ];
 

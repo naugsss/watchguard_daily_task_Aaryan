@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { AuthResponseData, AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
 
@@ -23,12 +22,7 @@ export class SignupComponent {
     const email = authForm.value.email;
     const name = authForm.value.name;
 
-    console.log(authForm);
-    let authObs: Observable<AuthResponseData>;
-
-    authObs = this.authService.signup(email, name, username, password);
-
-    authObs.subscribe({
+    this.authService.signup(email, name, username, password).subscribe({
       next: (response) => {
         console.log('response', response);
         this.toast.success({

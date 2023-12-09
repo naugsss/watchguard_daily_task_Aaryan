@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CourseComponent } from './components/courses/course/course.component';
 import { CartComponent } from './components/cart/cart.component';
+import { LoginInterceptorService } from './components/login/login.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,13 @@ import { CartComponent } from './components/cart/cart.component';
     HttpClientModule,
     NgToastModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoginInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
