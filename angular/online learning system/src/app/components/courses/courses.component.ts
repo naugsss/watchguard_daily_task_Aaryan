@@ -1,8 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Course } from './course/course.model';
 import { CourseService } from './course.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-courses',
@@ -13,9 +20,12 @@ export class CoursesComponent implements OnInit, OnDestroy {
   courses: Course[] = [];
   subscription: Subscription;
 
+  searchtext: string = '';
+  filteredCourse: Course[] = [];
+
+  @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
   constructor(
     private courseService: CourseService,
-    // private CoursesService: CoursesService
     private courseDataService: CourseDataService
   ) {}
 
@@ -23,6 +33,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
     console.log('ngOnInit');
     this.courseDataService.fetchCourses().subscribe((courses) => {
       this.courseService.setCourses(courses);
+      this.filteredCourse = courses;
     });
 
     this.subscription = this.courseService.coursesList.subscribe(
@@ -32,6 +43,20 @@ export class CoursesComponent implements OnInit, OnDestroy {
     );
 
     this.courses = this.courseService.getCourses();
+  }
+
+  onSearchChange() {
+    this.searchtext = this.searchInput.nativeElement.value;
+    this.updateCourses();
+  }
+  onSearchClick() {
+    this.updateCourses();
+  }
+
+  updateCourses() {
+    this.filteredCourse = this.courses.filter((course) => {
+      return course.name.toLowerCase().includes(this.searchtext.toLowerCase());
+    });
   }
 
   ngOnDestroy(): void {

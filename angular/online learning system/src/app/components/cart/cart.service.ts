@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 })
 export class cartService {
   private cart: Course[] = [];
-  private cartSub = new BehaviorSubject<Course[]>(this.cart);
+  cartSub = new BehaviorSubject<Course[]>(this.cart);
 
   constructor(private toast: NgToastService) {}
 

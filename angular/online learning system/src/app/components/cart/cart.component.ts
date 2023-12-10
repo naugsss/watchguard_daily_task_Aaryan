@@ -32,9 +32,18 @@ export class CartComponent implements OnInit {
 
   onBuyNowClick(course: Course) {
     this.courseDataService.purchaseCourse(course);
+    this.onRemoveClick(course.name);
+    this.updateCart();
   }
 
   onRemoveClick(courseName: string) {
     this.cartService.removeFromCart(courseName);
+    this.updateCart();
+  }
+
+  updateCart() {
+    this.cartService.cartSub.subscribe((cart) => {
+      this.cart = cart;
+    });
   }
 }
