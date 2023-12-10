@@ -22,8 +22,11 @@
     <button class="login-btn" routerLink="login" *ngIf="!isAuthenticated">
       Log In
     </button>
-    <button class="logout-btn" *ngIf="isAuthenticated" (click)="onLogout()">
-      Log Out
-    </button>
+    <div *ngIf="isAuthenticated">
+      <button class="cart" routerLink="cart">
+        <span><i class="fa-solid fa-cart-shopping"></i></span> Cart
+      </button>
+      <button class="logout-btn" (click)="onLogout()">Log Out</button>
+    </div>
   </div>
 </div>

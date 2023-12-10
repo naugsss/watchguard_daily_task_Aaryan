@@ -1,76 +1,31 @@
+<!-- <div *ngFor="let course of cartItems">
+  <h3>{{ course.name }}</h3>
+  <p>{{ course.rating }}</p>
+  <span>Price: ₹{{ course.price }}</span>
+</div> -->
 <div class="container">
-  <div class="card flex-row flex-wrap">
-    <div class="card-image">
+  <div class="card" *ngFor="let course of cartItems">
+    <div class="card-img">
       <img
+        class="card-img-top"
         src="../../../assets/courses/python-course-image.png"
-        alt="course image"
-        width="400px"
-        height="300px"
+        alt="Card image cap"
+        height="250px"
       />
     </div>
-    <div class="card-block px-2">
-      <h4 class="card-title">Python for beginners</h4>
-      <p class="card-text">₹ 1200</p>
+    <div class="card-body">
+      <h4 class="card-title">{{ course.name }}</h4>
+      <p class="card-text">₹ {{ course.price }}</p>
       <div class="stars">
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
+        <i
+          class="fa fa-star"
+          *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+          [ngClass]="{ filled: course.rating >= i + 1 }"
+        ></i>
       </div>
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-      <div class="purchase-options">
-        <button class="buy-now">Buy now</button>
-      </div>
-    </div>
-  </div>
-  <div class="card flex-row flex-wrap">
-    <div>
-      <img
-        src="../../../assets/courses/python-course-image.png"
-        alt="course image"
-        width="300px"
-        height="300px"
-      />
-    </div>
-    <div class="card-block px-2">
-      <h4 class="card-title">Python for beginners</h4>
-      <p class="card-text">₹ 1200</p>
-      <div class="stars">
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-      </div>
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-      <div class="purchase-options">
-        <button class="buy-now">Buy now</button>
-      </div>
-    </div>
-  </div>
-  <div class="card flex-row flex-wrap">
-    <div>
-      <img
-        src="../../../assets/courses/python-course-image.png"
-        alt="course image"
-        width="300px"
-        height="300px"
-      />
-    </div>
-    <div class="card-block px-2">
-      <h4 class="card-title">Python for beginners</h4>
-      <p class="card-text">₹ 1200</p>
-      <div class="stars">
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-      </div>
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-      <div class="purchase-options">
-        <button class="buy-now">Buy now</button>
+      <div class="cart-button">
+        <button class="btn">Buy Now</button>
+        <button class="btn">Remove</button>
       </div>
     </div>
   </div>

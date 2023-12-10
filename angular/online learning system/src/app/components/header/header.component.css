@@ -13,6 +13,11 @@ a:hover {
   font-weight: 600;
 }
 
+button:hover {
+  color: #afb2bf;
+  font-weight: 600;
+}
+
 .page-header-nav > a,
 .page-header-login-logout > a {
   color: #afb2bf;
@@ -28,4 +33,13 @@ a:hover {
   background-color: #161d29;
   border: none;
   font-size: 20px;
+}
+
+.cart {
+  text-decoration: none;
+  color: #afb2bf;
+  background-color: #161d29;
+  border: none;
+  font-size: 20px;
+  margin-right: 20px;
 }

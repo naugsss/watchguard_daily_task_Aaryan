@@ -60,38 +60,35 @@ export class AuthService {
       );
   }
 
-  logout() {
-    // this.courseService.getCourses().subscribe({
-    //   next: (response) => {
-    //     console.log('response', response);
-    //   },
-    //   error: (error) => {
-    //     console.log(error);
-    //   },
-    // });
-    this.user.next(null);
-    this.router.navigate(['/login']);
-    localStorage.removeItem('userData');
+  isLoggedIn(): boolean {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    return userData && userData.token;
   }
 
   autoLogin() {
-    const userData: {
-      username: string;
-      role: number;
-      token: string;
-    } = JSON.parse(localStorage.getItem('userData'));
-    if (!userData) {
-      return;
-    }
+    if (this.isLoggedIn()) {
+      const userData: {
+        username: string;
+        role: number;
+        token: string;
+      } = JSON.parse(localStorage.getItem('userData'));
 
-    const loadedUser = new User(
-      userData.username,
-      userData.role,
-      userData.token
-    );
-    if (loadedUser.token) {
-      this.user.next(loadedUser);
+      const token = userData.token;
+      const decodedToken: loginResponse = jwtDecode(token);
+
+      if (decodedToken.expire < new Date().getTime()) {
+        this.logout();
+      } else {
+        const user = new User(userData.username, userData.role, userData.token);
+        this.user.next(user);
+      }
     }
+  }
+
+  logout() {
+    this.user.next(null);
+    this.router.navigate(['/login']);
+    localStorage.removeItem('userData');
   }
 
   handleLogin(response: any) {

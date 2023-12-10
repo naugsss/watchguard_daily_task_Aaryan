@@ -31,7 +31,7 @@ export class LoginComponent {
         this.toast.success({
           detail: 'Login successful.',
         });
-        this.router.navigate(['']);
+        this.router.navigate(['/courses']);
       },
       error: (error) => {
         console.log(error);

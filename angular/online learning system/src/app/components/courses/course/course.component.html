@@ -7,66 +7,18 @@
       height="250px"
     />
     <div class="card-body">
-      <h4 class="card-title">Python for beginners</h4>
-      <p class="card-text">₹ 1200</p>
+      <h4 class="card-title">{{ course.name }}</h4>
+      <p class="card-text">₹ {{ course.price }}</p>
       <div class="stars">
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
+        <i
+          class="fa fa-star"
+          *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+          [ngClass]="{ filled: course.rating >= i + 1 }"
+        ></i>
       </div>
       <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
       <div class="purchase-options">
-        <button class="add-to-cart">Add to Cart</button>
-        <button class="buy-now">Buy now</button>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <img
-      class="card-img-top"
-      src="../../../assets/courses/python-course-image.png"
-      alt="Card image cap"
-      height="250px"
-    />
-    <div class="card-body">
-      <h4 class="card-title">Python for beginners</h4>
-      <p class="card-text">₹ 1200</p>
-      <div class="stars">
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-      </div>
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-      <div class="purchase-options">
-        <button class="add-to-cart">Add to Cart</button>
-        <button class="buy-now">Buy now</button>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <img
-      class="card-img-top"
-      src="../../../assets/courses/python-course-image.png"
-      alt="Card image cap"
-      height="250px"
-    />
-    <div class="card-body">
-      <h4 class="card-title">Python for beginners</h4>
-      <p class="card-text">₹ 1200</p>
-      <div class="stars">
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-        <i class="fa-solid fa-star star"></i>
-      </div>
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-      <div class="purchase-options">
-        <button class="add-to-cart">Add to Cart</button>
+        <button class="add-to-cart" (click)="addTocart(course)">Add to Cart</button>
         <button class="buy-now">Buy now</button>
       </div>
     </div>

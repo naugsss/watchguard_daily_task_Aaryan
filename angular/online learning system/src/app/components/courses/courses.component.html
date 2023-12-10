@@ -19,8 +19,12 @@
       <div class="courses">
         <h2>Top course for you</h2>
         <hr />
-        <div>
-          <app-course></app-course>
+        <div class="course-card">
+          <app-course
+            *ngFor="let courseEl of courses; let i = index"
+            [course]="courseEl"
+            [index]="i"
+          ></app-course>
         </div>
       </div>
     </div>

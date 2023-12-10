@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./courses.component.css'],
 })
 export class CoursesComponent implements OnInit, OnDestroy {
-  private courses: Course[] = [];
+  courses: Course[] = [];
   subscription: Subscription;
 
   constructor(

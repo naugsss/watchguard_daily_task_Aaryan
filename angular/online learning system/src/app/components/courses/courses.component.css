@@ -1,5 +1,5 @@
 .container {
-  margin: 50px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,6 +8,8 @@
 
 .course-section {
   margin-top: 50px;
+  display: flex;
+  align-items: start;
 }
 
 .filter {
@@ -47,6 +49,13 @@ select {
 
 .courses {
   width: 80%;
+}
+
+.course-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 50px;
 }
 
 .course {
