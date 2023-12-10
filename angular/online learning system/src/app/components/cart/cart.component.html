@@ -4,7 +4,7 @@
   <span>Price: ₹{{ course.price }}</span>
 </div> -->
 <div class="container">
-  <div class="card" *ngFor="let course of cartItems">
+  <div class="card" *ngFor="let course of cart; let j = index">
     <div class="card-img">
       <img
         class="card-img-top"
@@ -24,8 +24,8 @@
         ></i>
       </div>
       <div class="cart-button">
-        <button class="btn">Buy Now</button>
-        <button class="btn">Remove</button>
+        <button class="btn" (click)="onBuyNowClick(course)">Buy Now</button>
+        <button class="btn" (click)="onRemoveClick(course.name)">Remove</button>
       </div>
     </div>
   </div>
