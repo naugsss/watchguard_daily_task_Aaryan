@@ -2,6 +2,7 @@
   <div class="page-header-logo">
     <h2>Watch & Learn</h2>
   </div>
+
   <div>
     <div class="page-header-nav">
       <a
@@ -18,15 +19,30 @@
       >
     </div>
   </div>
+
   <div class="page-header-login-logout">
     <button class="login-btn" routerLink="login" *ngIf="!isAuthenticated">
       Log In
     </button>
-    <div *ngIf="isAuthenticated">
+    <div *ngIf="isAuthenticated" class="header-right">
       <button class="cart" routerLink="cart">
         <span><i class="fa-solid fa-cart-shopping"></i></span> Cart
       </button>
-      <button class="logout-btn" (click)="onLogout()">Log Out</button>
+      <img
+        class="profile-logo"
+        src="../../../assets/login_signup/profile.svg"
+        alt="profile"
+        height="40px"
+      />
+      <!-- <button class="logout-btn" (click)="onLogout()">Log Out</button> -->
     </div>
   </div>
+</div>
+<div class="profile-container">
+  <button class="profile-btn admin">Admin Dashboard</button>
+  <button class="profile-btn mentor">Mentor Dashboard</button>
+  <button class="profile-btn my-learning" routerLink="myLearning">
+    My Learning
+  </button>
+  <button class="profile-btn logout" (click)="onLogout()">Log Out</button>
 </div>

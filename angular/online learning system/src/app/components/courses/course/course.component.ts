@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Course } from './course.model';
 import { cartService } from '../../cart/cart.service';
 
@@ -11,7 +13,7 @@ export class CourseComponent {
   @Input() course: Course;
   @Input() index: number;
 
-  constructor(private cartService: cartService) {}
+  constructor(private cartService: cartService, private router: Router) {}
 
   addTocart(course: Course) {
     this.cartService.addToCart(course);
@@ -23,5 +25,9 @@ export class CourseComponent {
 
   get partialStar(): boolean {
     return this.course.rating % 1 !== 0;
+  }
+
+  isOnCoursePage(): boolean {
+    return this.router.url === '/courses';
   }
 }

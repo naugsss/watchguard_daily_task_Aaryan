@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { cartService } from './cart.service';
 import { Course } from '../courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',

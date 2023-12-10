@@ -16,8 +16,7 @@
           [ngClass]="{ filled: course.rating >= i + 1 }"
         ></i>
       </div>
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-      <div class="purchase-options">
+      <div class="purchase-options" *ngIf="isOnCoursePage()">
         <button class="add-to-cart" (click)="addTocart(course)">
           Add to Cart
         </button>

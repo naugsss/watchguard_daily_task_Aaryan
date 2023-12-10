@@ -6,10 +6,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Course } from './course/course.model';
 import { CourseService } from './course.service';
+import { FilterService } from './course-filter/filter.service';
 
 @Component({
   selector: 'app-courses',
@@ -26,7 +28,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
   @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
   constructor(
     private courseService: CourseService,
-    private courseDataService: CourseDataService
+    private courseDataService: CourseDataService,
+    private filterService: FilterService
   ) {}
 
   ngOnInit(): void {
@@ -44,11 +47,16 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
     this.courses = this.courseService.getCourses();
   }
+  onRatingSelect(rating: number) {
+    this.filterService.setSelectedRating(rating);
+    this.updateCourses();
+  }
 
   onSearchChange() {
     this.searchtext = this.searchInput.nativeElement.value;
     this.updateCourses();
   }
+
   onSearchClick() {
     this.updateCourses();
   }

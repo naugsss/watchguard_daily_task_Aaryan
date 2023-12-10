@@ -12,13 +12,22 @@ export class CourseDataService {
   constructor(public http: HttpClient, private toast: NgToastService) {}
 
   fetchCourses() {
-    console.log('fetching courses');
     return this.http.get<Course[]>('http://127.0.0.1:8000/courses').pipe(
       tap((response) => {
-        console.log(response);
         // this.courseService.setCourses(courses);
       })
     );
+  }
+
+  fetchPurchasedCoures() {
+    return this.http
+      .get<Course[]>('http://127.0.0.1:8000/purchased_courses')
+      .pipe(
+        tap((response) => {
+          console.log(response);
+          // this.courseService.setCourses(courses);
+        })
+      );
   }
 
   purchaseCourse(course: Course) {
@@ -47,23 +56,6 @@ export class CourseDataService {
           });
         },
       });
-  }
-
-  private handleResponse(errorResponse: any) {
-    let errorMessage = 'An Error Occured!';
-    if (!errorResponse.error || !errorResponse.error.error) {
-      return throwError(() => errorMessage);
-    }
-    switch (errorResponse.error.error.message) {
-      case 'This username already exists':
-        errorMessage = 'This username already exists';
-        break;
-
-      case 'Please enter valid credentials.':
-        errorMessage = 'Please enter valid credentials.';
-        break;
-    }
-    return throwError(() => errorMessage);
   }
 
   // add new course

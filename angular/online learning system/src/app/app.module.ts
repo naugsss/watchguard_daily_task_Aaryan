@@ -14,6 +14,8 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { CourseComponent } from './components/courses/course/course.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LoginInterceptorService } from './components/login/login.interceptor';
+import { MyLearningComponent } from './components/my-learning/my-learning.component';
+import { CourseFilterComponent } from './components/courses/course-filter/course-filter.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { LoginInterceptorService } from './components/login/login.interceptor';
     CoursesComponent,
     CourseComponent,
     CartComponent,
+    MyLearningComponent,
+    CourseFilterComponent,
   ],
   imports: [
     BrowserModule,
