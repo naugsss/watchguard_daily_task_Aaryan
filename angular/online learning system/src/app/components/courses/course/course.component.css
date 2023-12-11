@@ -19,7 +19,8 @@
   margin-top: 20px;
 }
 
-.buy-now {
+.buy-now,
+.reject {
   background-color: rgba(255, 214, 10, 0.882);
   padding: 10px;
   color: rgba(1, 9, 20, 255);
@@ -29,7 +30,8 @@
   margin-left: 25px;
 }
 
-.add-to-cart {
+.add-to-cart,
+.approve {
   background-color: rgba(255, 214, 10, 0.882);
   padding: 10px;
   color: rgba(1, 9, 20, 255);
@@ -44,7 +46,8 @@
   gap: 80px;
 }
 
-.purchase-options {
+.purchase-options,
+.approval-options {
   margin-top: 20px;
 }
 

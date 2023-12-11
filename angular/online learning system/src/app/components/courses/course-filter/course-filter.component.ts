@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Subject } from 'rxjs';
+
 import { Course } from '../course/course.model';
-import { CourseService } from '../course.service';
-import { FilterService } from './filter.service';
 
 @Component({
   selector: 'app-course-filter',
@@ -9,11 +9,11 @@ import { FilterService } from './filter.service';
   styleUrls: ['./course-filter.component.css'],
 })
 export class CourseFilterComponent {
-  constructor(private filterService: FilterService) {}
-
   course: Course[];
 
+  @Output() ratingSelected = new EventEmitter<number>();
+
   filterCourseByRating(rating: number) {
-    this.filterService.setSelectedRating(rating);
+    this.ratingSelected.emit(rating);
   }
 }

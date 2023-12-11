@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap, throwError } from 'rxjs';
-import { Course } from '../components/courses/course/course.model';
-import { CourseService } from '../components/courses/course.service';
 import { NgToastService } from 'ng-angular-popup';
+
+import { Course } from '../components/courses/course/course.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +11,19 @@ import { NgToastService } from 'ng-angular-popup';
 export class CourseDataService {
   constructor(public http: HttpClient, private toast: NgToastService) {}
 
-  fetchCourses() {
-    return this.http.get<Course[]>('http://127.0.0.1:8000/courses').pipe(
+  // fetchCourses() {
+  //   return this.http.get<Course[]>('http://127.0.0.1:8000/courses').pipe(
+  //     tap((response) => {
+  //       console.log(response);
+  //     })
+  //   );
+  // }
+
+  fetchCourses(page: number = 1, size: number = 6) {
+    const url = `http://127.0.0.1:8000/courses?page=${page}&size=${size}`;
+    return this.http.get<Course[]>(url).pipe(
       tap((response) => {
-        // this.courseService.setCourses(courses);
+        console.log(response);
       })
     );
   }
@@ -25,7 +34,16 @@ export class CourseDataService {
       .pipe(
         tap((response) => {
           console.log(response);
-          // this.courseService.setCourses(courses);
+        })
+      );
+  }
+
+  fetchPendingCourseReqeust() {
+    return this.http
+      .get<Course[]>('http://127.0.0.1:8000/pending_courses')
+      .pipe(
+        tap((response) => {
+          // console.log(response);
         })
       );
   }

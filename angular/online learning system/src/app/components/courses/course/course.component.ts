@@ -30,4 +30,8 @@ export class CourseComponent {
   isOnCoursePage(): boolean {
     return this.router.url === '/courses';
   }
+
+  isOnAdminPage(): boolean {
+    return this.router.url === '/admin';
+  }
 }

@@ -28,21 +28,35 @@
       <button class="cart" routerLink="cart">
         <span><i class="fa-solid fa-cart-shopping"></i></span> Cart
       </button>
-      <img
-        class="profile-logo"
-        src="../../../assets/login_signup/profile.svg"
-        alt="profile"
-        height="40px"
-      />
+      <button class="profile" (click)="toggleProfileOptions()">
+        <img
+          class="profile-logo"
+          src="../../../assets/login_signup/profile.svg"
+          alt="profile"
+          height="40px"
+        />
+      </button>
+      <div class="profile-container" *ngIf="showProfileOptions">
+        <button class="profile-btn admin" routerLink="admin">
+          Admin Dashboard
+        </button>
+        <button class="profile-btn mentor">Mentor Dashboard</button>
+        <button class="profile-btn my-learning" routerLink="myLearning">
+          My Learning
+        </button>
+        <button class="profile-btn logout" (click)="onLogout()">Log Out</button>
+      </div>
+
       <!-- <button class="logout-btn" (click)="onLogout()">Log Out</button> -->
     </div>
   </div>
 </div>
-<div class="profile-container">
+
+<!-- <div class="profile-container" *ngIf="showProfileOptions">
   <button class="profile-btn admin">Admin Dashboard</button>
   <button class="profile-btn mentor">Mentor Dashboard</button>
   <button class="profile-btn my-learning" routerLink="myLearning">
     My Learning
   </button>
   <button class="profile-btn logout" (click)="onLogout()">Log Out</button>
-</div>
+</div> -->

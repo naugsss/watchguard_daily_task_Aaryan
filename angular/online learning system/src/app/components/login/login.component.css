@@ -1,3 +1,6 @@
+.container {
+  height: 100vh;
+}
 .signup {
   display: flex;
   justify-items: center;

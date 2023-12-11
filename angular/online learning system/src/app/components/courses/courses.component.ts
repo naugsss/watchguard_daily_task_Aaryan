@@ -6,12 +6,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Course } from './course/course.model';
 import { CourseService } from './course.service';
 import { FilterService } from './course-filter/filter.service';
+import { CourseFilterComponent } from './course-filter/course-filter.component';
 
 @Component({
   selector: 'app-courses',
@@ -21,11 +21,15 @@ import { FilterService } from './course-filter/filter.service';
 export class CoursesComponent implements OnInit, OnDestroy {
   courses: Course[] = [];
   subscription: Subscription;
-
   searchtext: string = '';
   filteredCourse: Course[] = [];
+  currentPage: number = 1;
+  pageSize: number = 10;
+  loadingMore: boolean = false;
 
   @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
+  @ViewChild('filterComponent') filterComponent: CourseFilterComponent;
+
   constructor(
     private courseService: CourseService,
     private courseDataService: CourseDataService,
@@ -34,8 +38,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('ngOnInit');
+
     this.courseDataService.fetchCourses().subscribe((courses) => {
-      this.courseService.setCourses(courses);
+      this.courseService.setAllCourses(courses);
       this.filteredCourse = courses;
     });
 
@@ -45,11 +50,27 @@ export class CoursesComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.courses = this.courseService.getCourses();
+    if (this.filterComponent) {
+      this.filterComponent.ratingSelected.subscribe((rating) => {
+        console.log(rating);
+        this.updateCourseByRating(rating);
+      });
+    }
   }
+
+  updateCourseByRating(rating: number) {
+    this.filteredCourse = this.filterService.filterCourses(
+      this.courses,
+      this.searchtext
+    );
+
+    console.log(this.filteredCourse);
+  }
+
   onRatingSelect(rating: number) {
     this.filterService.setSelectedRating(rating);
     this.updateCourses();
+    console.log(this.filteredCourse);
   }
 
   onSearchChange() {
@@ -63,7 +84,10 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   updateCourses() {
     this.filteredCourse = this.courses.filter((course) => {
-      return course.name.toLowerCase().includes(this.searchtext.toLowerCase());
+      return (
+        course.name.toLowerCase().includes(this.searchtext.toLowerCase()) &&
+        course.rating >= this.filterService.selectedRating
+      );
     });
   }
 

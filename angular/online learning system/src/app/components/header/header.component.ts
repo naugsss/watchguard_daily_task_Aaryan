@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
+  showProfileOptions = false;
   private userSub: Subscription;
 
   constructor(private authService: AuthService) {}
@@ -21,12 +22,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.isAuthenticated = true;
     }
   }
-
+  toggleProfileOptions() {
+    this.showProfileOptions = !this.showProfileOptions;
+  }
   onLogout() {
     this.authService.logout();
+    this.showProfileOptions = false;
   }
 
   ngOnDestroy() {
     this.userSub.unsubscribe();
+    this.showProfileOptions = false;
   }
 }

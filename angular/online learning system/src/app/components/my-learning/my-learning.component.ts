@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { CourseService } from '../courses/course.service';
 import { Course } from '../courses/course/course.model';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-my-learning',
@@ -20,7 +21,7 @@ export class MyLearningComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseDataService.fetchPurchasedCoures().subscribe((courses) => {
-      this.courseService.setCourses(courses);
+      this.courseService.setPurchasedCourses(courses);
     });
 
     this.subscription = this.courseService.coursesList.subscribe(
@@ -29,6 +30,6 @@ export class MyLearningComponent implements OnInit {
       }
     );
 
-    this.courses = this.courseService.getCourses();
+    this.courses = this.courseService.getPurchasedCourses();
   }
 }

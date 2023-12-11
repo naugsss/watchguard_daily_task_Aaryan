@@ -8,14 +8,21 @@ export class FilterService {
   selectedRating: number = 0;
 
   setSelectedRating(rating: number) {
+    console.log(`Setting selected rating is ${rating}`);
     this.selectedRating = rating;
-    console.log(this.selectedRating);
   }
 
-  filterCourses(courses: Course[]): Course[] {
+  filterCourses(courses: Course[], searchtext: string): Course[] {
     if (this.selectedRating === 0) {
-      return courses;
+      return courses.filter((course) => {
+        course.name.toLocaleLowerCase().includes(searchtext.toLowerCase());
+      });
     }
-    return courses.filter((course) => course.rating >= this.selectedRating);
+    return courses.filter((course) => {
+      return (
+        course.name.toLocaleLowerCase().includes(searchtext.toLowerCase()) &&
+        course.rating >= this.selectedRating
+      );
+    });
   }
 }

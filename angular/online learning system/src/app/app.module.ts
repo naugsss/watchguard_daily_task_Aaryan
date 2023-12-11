@@ -16,6 +16,10 @@ import { CartComponent } from './components/cart/cart.component';
 import { LoginInterceptorService } from './components/login/login.interceptor';
 import { MyLearningComponent } from './components/my-learning/my-learning.component';
 import { CourseFilterComponent } from './components/courses/course-filter/course-filter.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminCoursesComponent } from './components/admin/admin-courses/admin-courses.component';
+import { AdminMentorComponent } from './components/admin/admin-mentor/admin-mentor.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { CourseFilterComponent } from './components/courses/course-filter/course
     CartComponent,
     MyLearningComponent,
     CourseFilterComponent,
+    FooterComponent,
+    AdminComponent,
+    AdminCoursesComponent,
+    AdminMentorComponent,
   ],
   imports: [
     BrowserModule,

@@ -80,6 +80,11 @@ button:hover {
   padding: 5px;
 }
 
+.profile {
+  background-color: transparent;
+  border: none;
+}
+
 .mentor {
   border-top: 1px solid #2c333f;
 }

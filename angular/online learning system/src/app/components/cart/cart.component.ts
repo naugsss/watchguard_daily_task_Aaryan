@@ -21,11 +21,9 @@ export class CartComponent implements OnInit {
     const cartData = localStorage.getItem('cart');
     if (cartData) {
       this.cart = JSON.parse(cartData);
-      console.log(this.cart);
     } else {
       this.cartService.getCart().subscribe((cart) => {
         this.cart = cart;
-        console.log(this.cart);
       });
     }
   }

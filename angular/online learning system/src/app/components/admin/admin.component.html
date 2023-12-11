@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="heading">
+    <button class="btn active" (click)="courseButtonClicked()">Courses</button>
+    <button class="btn" (click)="mentorButtonClicked()">Mentor</button>
+  </div>
+  <div class="admin-course" *ngIf="courseButton">
+    <app-admin-courses></app-admin-courses>
+  </div>
+  <div class="admin-mentor" *ngIf="mentorButton">
+    <app-admin-mentor></app-admin-mentor>
+  </div>
+</div>
