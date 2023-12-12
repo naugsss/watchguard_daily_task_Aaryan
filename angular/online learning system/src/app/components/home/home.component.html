@@ -22,10 +22,12 @@
   <div class="courses-section">
     <h2>Unlock the <span class="courses-heading">Power of Code</span></h2>
     <p class="courses-sub-heading">Learn to build anything you can imagine</p>
-    <!-- make an api call here for the courses card in the very beginnning -->
-    <!-- <div class="courses-card">
-      <app-course></app-course>
-    </div> -->
+
+    <div class="courses-card">
+      <div *ngFor="let course of courses">
+        <app-course [course]="course" class="course-card"></app-course>
+      </div>
+    </div>
     <button class="explore" routerLink="/courses">Explore all courses</button>
   </div>
 
@@ -38,11 +40,35 @@
       <span class="feedback-heading">say about us</span>
     </h2>
     <div class="courses-feedback">
-      <div class="courses-feedback">
-        <div class="course-feedback">a</div>
-        <div class="course-feedback">b</div>
-        <div class="course-feedback">c</div>
-        <div class="course-feedback">d</div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          This is the best course out there to learn react concepts from the
+          scratch. The instructor teaches from the basics explaining each and
+          every concept in depth
+        </p>
+      </div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          Thank you sir for teaching DSA concepts in a graspable manner and
+          supporting us throughout the course
+        </p>
+      </div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          Thank you sir for teaching DSA concepts in a graspable manner and
+          supporting us throughout the course
+        </p>
+      </div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          This is the best course out there to learn react concepts from the
+          scratch. The instructor teaches from the basics explaining each and
+          every concept in depth
+        </p>
       </div>
     </div>
   </div>

@@ -51,6 +51,25 @@ hr {
   flex-direction: column;
 }
 
+.courses-section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.courses-card {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.course-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 50px;
+}
+
 .courses-sub-heading {
   font-size: small;
   color: #afb2bf;
@@ -68,17 +87,23 @@ hr {
   border-radius: 10px;
 }
 
-.courses-card,
 .courses-feedback {
   margin: 30px 0;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
 .course-feedback {
   margin: 0 30px;
+  padding: 10px;
   height: 200px;
-  width: 200px;
+  width: 250px;
   background-color: #161d29;
   color: white;
+}
+
+.feedback-icon {
+  width: 100%;
+  font-size: 40px;
 }

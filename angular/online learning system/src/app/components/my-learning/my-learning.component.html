@@ -1,8 +1,12 @@
 <div class="container">
-  <app-course
-    class="course-card"
-    *ngFor="let courseEl of courses; let i = index"
-    [course]="courseEl"
-    [index]="i"
-  ></app-course>
+  <h1>My Learning</h1>
+  <hr />
+  <div class="courses">
+    <app-course
+      class="course-card"
+      *ngFor="let courseEl of courses; let i = index"
+      [course]="courseEl"
+      [index]="i"
+    ></app-course>
+  </div>
 </div>

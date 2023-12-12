@@ -24,7 +24,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   searchtext: string = '';
   filteredCourse: Course[] = [];
   currentPage: number = 1;
-  pageSize: number = 10;
+  pageSize: number = 6;
   loadingMore: boolean = false;
 
   @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
@@ -39,14 +39,20 @@ export class CoursesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('ngOnInit');
 
-    this.courseDataService.fetchCourses().subscribe((courses) => {
-      this.courseService.setAllCourses(courses);
-      this.filteredCourse = courses;
-    });
+    // this.courseDataService.fetchCourses().subscribe((courses) => {
+    //   this.courseService.setAllCourses(courses);
+    //   this.filteredCourse = courses;
+    // });
+    this.fetchCourses(this.currentPage, this.pageSize);
 
+    // this.subscription = this.courseService.coursesList.subscribe(
+    //   (courses: Course[]): void => {
+    //     this.courses = courses;
+    //   }
+    // );
     this.subscription = this.courseService.coursesList.subscribe(
-      (courses: Course[]): void => {
-        this.courses = courses;
+      (courses: Course[]) => {
+        this.courses = courses.slice(); // Set courses only once
       }
     );
 
@@ -56,6 +62,23 @@ export class CoursesComponent implements OnInit, OnDestroy {
         this.updateCourseByRating(rating);
       });
     }
+  }
+
+  // fetchCourses(page: number, size: number) {
+  //   this.loadingMore = true;
+  //   this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
+  //     this.courseService.setAllCourses(courses);
+  //     this.updateCourses();
+  //     this.loadingMore = false;
+  //   });
+  // }
+  fetchCourses(page: number, size: number) {
+    this.loadingMore = true;
+    this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
+      this.courses = courses; // Update only courses
+      this.updateCourses();
+      this.loadingMore = false;
+    });
   }
 
   updateCourseByRating(rating: number) {
@@ -80,6 +103,23 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   onSearchClick() {
     this.updateCourses();
+  }
+
+  // loadMoreCourses() {
+  //   this.currentPage++;
+  //   this.fetchCourses(this.currentPage, this.pageSize);
+  // }
+
+  loadMoreCourses() {
+    this.loadingMore = true;
+    this.currentPage++;
+    this.courseDataService
+      .fetchCourses(this.currentPage, this.pageSize)
+      .subscribe((courses) => {
+        this.courses.push(...courses);
+        this.updateCourses();
+        this.loadingMore = false;
+      });
   }
 
   updateCourses() {

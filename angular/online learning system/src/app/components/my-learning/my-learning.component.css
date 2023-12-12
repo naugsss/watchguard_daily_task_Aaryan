@@ -1,16 +1,22 @@
 .course-card {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 50px;
 }
 
 .container {
-  margin: 50px;
+  margin: 100px;
+  width: 100%;
   display: flex;
+  gap: 25px;
+  flex-direction: column;
+  height: 100%;
+}
+
+hr {
+}
+.courses {
+  display: flex;
+  gap: 30px;
   flex-direction: row;
-  align-items: center;
-  justify-items: center;
   flex-wrap: wrap;
-  gap: 50px;
 }

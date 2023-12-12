@@ -2,7 +2,8 @@
   background-color: #161d29;
   color: white;
   /* height: 500px; */
-  width: 350px;
+  box-shadow: 4px 4px 4px 4px #1b2733;
+  width: 300px;
 }
 
 .card:hover {
@@ -16,7 +17,8 @@
 }
 
 .card-body {
-  margin-top: 20px;
+  margin-top: 15px;
+  margin-left: 10px;
 }
 
 .buy-now,

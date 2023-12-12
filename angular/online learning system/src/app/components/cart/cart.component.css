@@ -6,6 +6,13 @@
   flex-direction: column;
   height: 100%;
 }
+
+/* .container {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+} */
 .card {
   background-color: #161d29;
   color: white;

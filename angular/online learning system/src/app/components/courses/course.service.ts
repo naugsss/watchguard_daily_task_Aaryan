@@ -19,8 +19,17 @@ export class CourseService {
     this.coursesList.next(this.courses.slice());
   }
 
+  // setAllCourses(course: Course[]) {
+  //   this.allCourses = course;
+  //   this.coursesList.next(this.allCourses.slice());
+  // }
+
   setAllCourses(course: Course[]) {
-    this.allCourses = course;
+    if (!this.allCourses.length) {
+      this.allCourses = course;
+    } else {
+      this.allCourses = [...this.allCourses, ...course]; // Merge new courses
+    }
     this.coursesList.next(this.allCourses.slice());
   }
   
