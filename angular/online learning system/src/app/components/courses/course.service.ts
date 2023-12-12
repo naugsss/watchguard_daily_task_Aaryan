@@ -35,12 +35,14 @@ export class CourseService {
   }
 
   setAllCourses(course: Course[]) {
+    console.log(course);
     if (!this.allCourses.length) {
       this.allCourses = course;
-    } else {
-      this.allCourses = [...this.allCourses, ...course];
-      console.log(this.allCourses);
     }
+    // else {
+    //   // this.allCourses = [...this.allCourses, ...course];
+    //   console.log(this.allCourses);
+    // }
     this.coursesList.next(this.allCourses.slice());
   }
 
