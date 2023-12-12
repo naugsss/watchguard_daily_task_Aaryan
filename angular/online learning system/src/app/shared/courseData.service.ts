@@ -48,6 +48,34 @@ export class CourseDataService {
       );
   }
 
+  fetchMentorEarning() {
+    return this.http.get('http://127.0.0.1:8000/mentor').pipe(
+      tap((response) => {
+        // console.log(response);
+      })
+    );
+  }
+
+  approveCourse(course: Course) {
+    return this.http
+      .put('http://127.0.0.1:8000/courses', {
+        course_name: course.name,
+        approval_status: 'approve',
+      })
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+
+          if (response['message'] === 'Course approved successfully') {
+            this.toast.info({
+              detail: 'Course approved successfully',
+              summary: 'Now course is available for purchase',
+            });
+          }
+        },
+      });
+  }
+
   purchaseCourse(course: Course) {
     this.http
       .post('http://127.0.0.1:8000/courses/' + course.name, {}, {})

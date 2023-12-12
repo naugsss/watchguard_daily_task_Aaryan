@@ -10,6 +10,7 @@ import { CourseDataService } from 'src/app/shared/courseData.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  emptyCartImage: string = null
   constructor(
     private cartService: cartService,
     private courseDataService: CourseDataService
@@ -24,6 +25,7 @@ export class CartComponent implements OnInit {
     } else {
       this.cartService.getCart().subscribe((cart) => {
         this.cart = cart;
+        this.emptyCartImage = this.cartService.emptyCartImage
       });
     }
   }

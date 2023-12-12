@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Course } from './course.model';
 import { cartService } from '../../cart/cart.service';
+import { CourseDataService } from 'src/app/shared/courseData.service';
 
 @Component({
   selector: 'app-course',
@@ -12,11 +13,21 @@ import { cartService } from '../../cart/cart.service';
 export class CourseComponent {
   @Input() course: Course;
   @Input() index: number;
+  @Input() price: boolean = true;
 
-  constructor(private cartService: cartService, private router: Router) {}
+  constructor(
+    private cartService: cartService,
+    private router: Router,
+    private CourseDataService: CourseDataService
+  ) {}
 
   addTocart(course: Course) {
     this.cartService.addToCart(course);
+  }
+
+  approveCourse(course: Course) {
+    console.log(course);
+    this.CourseDataService.approveCourse(course);
   }
 
   get filledStars(): number {

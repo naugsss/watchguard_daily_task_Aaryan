@@ -26,6 +26,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   currentPage: number = 1;
   pageSize: number = 6;
   loadingMore: boolean = false;
+  moreCourses: boolean = true;
 
   @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
   @ViewChild('filterComponent') filterComponent: CourseFilterComponent;
@@ -37,22 +38,22 @@ export class CoursesComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log('ngOnInit');
+    this.courseDataService.fetchCourses().subscribe((courses) => {
+      this.courseService.setAllCourses(courses);
+      this.filteredCourse = courses;
+    });
+    // this.fetchCourses(this.currentPage, this.pageSize);
+    // this.courseService.fetchCourses(this.currentPage, this.pageSize); // Fetch first page
 
-    // this.courseDataService.fetchCourses().subscribe((courses) => {
-    //   this.courseService.setAllCourses(courses);
-    //   this.filteredCourse = courses;
-    // });
-    this.fetchCourses(this.currentPage, this.pageSize);
+    this.subscription = this.courseService.coursesList.subscribe(
+      (courses: Course[]): void => {
+        this.courses = courses;
+      }
+    );
 
-    // this.subscription = this.courseService.coursesList.subscribe(
-    //   (courses: Course[]): void => {
-    //     this.courses = courses;
-    //   }
-    // );
     this.subscription = this.courseService.coursesList.subscribe(
       (courses: Course[]) => {
-        this.courses = courses.slice(); // Set courses only once
+        this.courses = courses.slice();
       }
     );
 
@@ -72,14 +73,19 @@ export class CoursesComponent implements OnInit, OnDestroy {
   //     this.loadingMore = false;
   //   });
   // }
+
   fetchCourses(page: number, size: number) {
     this.loadingMore = true;
     this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
-      this.courses = courses; // Update only courses
+      this.courses = courses;
       this.updateCourses();
       this.loadingMore = false;
     });
   }
+
+  // fetchCourses(page: number, size: number) {
+  //   this.courseService.fetchCourses(page, size);
+  // }
 
   updateCourseByRating(rating: number) {
     this.filteredCourse = this.filterService.filterCourses(
@@ -116,6 +122,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.courseDataService
       .fetchCourses(this.currentPage, this.pageSize)
       .subscribe((courses) => {
+        if (courses.length === 0) {
+          this.moreCourses = false;
+        }
         this.courses.push(...courses);
         this.updateCourses();
         this.loadingMore = false;

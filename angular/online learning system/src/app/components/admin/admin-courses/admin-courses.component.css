@@ -1,6 +1,6 @@
 .pending-courses {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 30px;
   margin-top: 30px;
   flex-wrap: wrap;
@@ -8,6 +8,12 @@
 
 .request-container {
   margin-top: 10px;
+}
+
+.courses-card {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 }
 
 .courses-container {

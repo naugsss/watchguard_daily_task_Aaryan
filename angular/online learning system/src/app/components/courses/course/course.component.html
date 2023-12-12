@@ -8,7 +8,7 @@
     />
     <div class="card-body">
       <h4 class="card-title">{{ course.name }}</h4>
-      <p class="card-text">₹ {{ course.price }}</p>
+      <p class="card-text" *ngIf="price">₹ {{ course.price }}</p>
       <div class="stars">
         <i
           class="fa fa-star"
@@ -23,7 +23,7 @@
         <button class="buy-now">Buy now</button>
       </div>
       <div class="approval-options" *ngIf="isOnAdminPage()">
-        <button class="approve">Approve</button>
+        <button class="approve" (click)="approveCourse(course)">Approve</button>
         <button class="reject">Reject</button>
       </div>
     </div>

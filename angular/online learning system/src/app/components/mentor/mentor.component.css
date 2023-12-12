@@ -1,0 +1,56 @@
+.container {
+  margin: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: none;
+  color: #afb2be;
+  box-sizing: border-box;
+  background-color: #161d29;
+}
+
+.add-new-course {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+}
+
+.course-form {
+  width: 508px;
+  padding: 32px;
+}
+
+.form-style {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+hr {
+  margin: none;
+}
+
+.btn {
+  background-color: #ffd60ae1;
+  padding: 10px;
+  width: 100%;
+  margin-top: 5px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+}
+
+h2 {
+  margin: 20px 0;
+}

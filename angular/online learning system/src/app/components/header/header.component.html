@@ -27,6 +27,7 @@
     <div *ngIf="isAuthenticated" class="header-right">
       <button class="cart" routerLink="cart">
         <span><i class="fa-solid fa-cart-shopping"></i></span> Cart
+        <span>{{ cartItemNumber }}</span>
       </button>
       <button class="profile" (click)="toggleProfileOptions()">
         <img
@@ -40,7 +41,9 @@
         <button class="profile-btn admin" routerLink="admin">
           Admin Dashboard
         </button>
-        <button class="profile-btn mentor">Mentor Dashboard</button>
+        <button class="profile-btn mentor" routerLink="mentor">
+          Mentor Dashboard
+        </button>
         <button class="profile-btn my-learning" routerLink="myLearning">
           My Learning
         </button>

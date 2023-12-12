@@ -9,6 +9,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { AuthGuard } from './components/login/auth.guard';
 import { MyLearningComponent } from './components/my-learning/my-learning.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { MentorComponent } from './components/mentor/mentor.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'admin', component: AdminComponent },
+  { path: 'mentor', component: MentorComponent },
   { path: 'cart', component: CartComponent },
   {
     path: 'myLearning',

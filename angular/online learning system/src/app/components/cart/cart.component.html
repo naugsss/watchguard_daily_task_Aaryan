@@ -1,6 +1,18 @@
 <div class="container">
   <h1>My Wishlist</h1>
   <hr />
+  <div class="empty-cart">
+    <div *ngIf="cart.length === 0">
+      <img
+        class="empty-cart-image"
+        src="../../../assets/cart/empty.svg"
+        alt="empty cart"
+        height="300px"
+      />
+      <p class="subheading">Your cart is empty, please add some items to it.</p>
+    </div>
+  </div>
+
   <div class="card" *ngFor="let course of cart; let j = index">
     <div class="card-img">
       <img

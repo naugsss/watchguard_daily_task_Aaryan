@@ -4,15 +4,28 @@
 }
 
 .table {
-  width: 100%;
   background-color: #161d29;
   margin-top: 35px;
   text-align: center;
   border: 1px solid #2c333f;
+  border-radius: 10px;
   font-size: 25px;
+}
+
+.profile-logo {
+  background-color: transparent;
 }
 
 th,
 td {
-  height: 45px;
+  height: 75px;
+}
+
+.mentor-name {
+  background: none;
+  color: white;
+}
+
+tr {
+  border-bottom: 1px solid #2c333f;
 }

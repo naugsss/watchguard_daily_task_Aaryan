@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { cartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +11,20 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   showProfileOptions = false;
+  cartItemNumber = 0;
   private userSub: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private cartService: cartService
+  ) {}
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
+    });
+
+    this.cartService.getCartItemNumber().subscribe((count) => {
+      this.cartItemNumber = count;
     });
 
     if (localStorage.getItem('userData')) {

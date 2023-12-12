@@ -1,12 +1,26 @@
 <div class="container">
   <div class="heading">
-    <button class="btn active" (click)="courseButtonClicked()">Courses</button>
-    <button class="btn" (click)="mentorButtonClicked()">Mentor</button>
+    <button
+      class="btn active"
+      #courseButton
+      (click)="courseButtonClicked()"
+      [ngClass]="{ active: changeComponent }"
+    >
+      Courses
+    </button>
+    <button
+      class="btn"
+      #mentorButton
+      (click)="mentorButtonClicked()"
+      [ngClass]="{ active: changeComponent === false }"
+    >
+      Mentor
+    </button>
   </div>
-  <div class="admin-course" *ngIf="courseButton">
+  <div class="admin-course" *ngIf="changeComponent">
     <app-admin-courses></app-admin-courses>
   </div>
-  <div class="admin-mentor" *ngIf="mentorButton">
+  <div class="admin-mentor" *ngIf="!changeComponent">
     <app-admin-mentor></app-admin-mentor>
   </div>
 </div>

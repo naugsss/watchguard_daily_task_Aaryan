@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AdminService } from './admin.service';
 
 @Component({
@@ -6,19 +6,16 @@ import { AdminService } from './admin.service';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
 })
-export class AdminComponent {
-  courseButton: boolean = true;
-  mentorButton: boolean = false;
-  constructor(private adminService: AdminService) {}
+export class AdminComponent implements OnInit {
+  changeComponent: boolean = true;
+
+  ngOnInit(): void {}
+
   courseButtonClicked() {
-    // this.adminService.buttonClicked.next('course button');
-    this.courseButton = true;
-    this.mentorButton = false;
+    this.changeComponent = true;
   }
 
   mentorButtonClicked() {
-    this.mentorButton = true;
-    this.courseButton = false;
-    // this.adminService.buttonClicked.next('mentor button');
+    this.changeComponent = false;
   }
 }

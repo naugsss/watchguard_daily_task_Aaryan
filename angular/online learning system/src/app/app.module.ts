@@ -20,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminCoursesComponent } from './components/admin/admin-courses/admin-courses.component';
 import { AdminMentorComponent } from './components/admin/admin-mentor/admin-mentor.component';
+import { MentorComponent } from './components/mentor/mentor.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AdminMentorComponent } from './components/admin/admin-mentor/admin-ment
     AdminComponent,
     AdminCoursesComponent,
     AdminMentorComponent,
+    MentorComponent,
   ],
   imports: [
     BrowserModule,

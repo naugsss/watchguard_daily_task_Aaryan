@@ -1,15 +1,17 @@
 <div class="container">
   <!-- pending course section -->
   <section class="request-container">
-    <h2>Pending course request</h2>
-    <hr />
-    <div class="pending-courses">
-      <app-course
-        class="course-card"
-        *ngFor="let courseEl of courses; let i = index"
-        [course]="courseEl"
-        [index]="i"
-      ></app-course>
+    <div class="pending-courses" *ngIf="courses.length > 0">
+      <h2>Pending course request</h2>
+      <hr />
+      <div class="courses-card">
+        <app-course
+          class="course-card"
+          *ngFor="let courseEl of courses; let i = index"
+          [course]="courseEl"
+          [index]="i"
+        ></app-course>
+      </div>
     </div>
   </section>
 

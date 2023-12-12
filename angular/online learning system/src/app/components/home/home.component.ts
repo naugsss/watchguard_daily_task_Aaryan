@@ -17,19 +17,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     private courseService: CourseService
   ) {}
   ngOnInit(): void {
-    console.log('inside home component');
     this.fetchCourses(1, 3);
     this.subscription = this.courseService.coursesList.subscribe(
       (courses: Course[]) => {
-        this.courses = courses.slice(); // Set courses only once
-        console.log(this.courses);
+        this.courses = courses.slice();
       }
     );
   }
 
   fetchCourses(page: number, size: number) {
     this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
-      this.courses = courses; // Update only courses
+      this.courses = courses;
     });
   }
 
