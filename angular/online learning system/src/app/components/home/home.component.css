@@ -65,7 +65,7 @@ hr {
 .course-card {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  /* gap: 50px; */
   margin-top: 50px;
 }
 

@@ -17,9 +17,15 @@ export class MentorComponent {
   faqAnswer: string = '';
 
   @ViewChild('courseForm') form: NgForm;
+  mentorEarnings: any = [];
 
-  ngOnInit(): void {}
   constructor(private courseDataService: CourseDataService) {}
+  ngOnInit(): void {
+    this.courseDataService.fetchMentorEarning().subscribe((earning) => {
+      this.mentorEarnings = earning;
+      // console.log(earning);
+    });
+  }
 
   onSubmit(): void {
     const courseData = {

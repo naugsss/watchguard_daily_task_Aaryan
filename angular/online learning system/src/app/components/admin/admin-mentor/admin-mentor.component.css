@@ -42,17 +42,16 @@ select {
   border-radius: 5px;
 }
 
-h2 {
-  margin-bottom: 25px;
-}
-
-.table {
+table {
   background-color: #161d29;
   margin-top: 50px;
   text-align: center;
   border: 1px solid #2c333f;
   border-radius: 10px;
   font-size: 25px;
+  height: 450px;
+  display: block;
+  overflow-y: scroll;
 }
 
 .profile-logo {
@@ -61,7 +60,11 @@ h2 {
 
 th,
 td {
+  width: 1505px;
   height: 75px;
+}
+tr {
+  border-bottom: 1px solid #2c333f;
 }
 
 .mentor-name {
@@ -69,6 +72,15 @@ td {
   color: white;
 }
 
-tr {
-  border-bottom: 1px solid #2c333f;
+::-webkit-scrollbar {
+  width: 4px;
+  height: 1px;
+}
+::-webkit-scrollbar-track {
+  border: 2px solid #161d29;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c333f;
+  border-radius: 10px;
 }

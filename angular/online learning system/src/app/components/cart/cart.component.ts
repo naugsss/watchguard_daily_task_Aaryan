@@ -46,4 +46,8 @@ export class CartComponent implements OnInit {
       this.cart = cart;
     });
   }
+
+  calculateSubtotalPrice(): number {
+    return this.cart.reduce((sum, course) => sum + course.price, 0);
+  }
 }

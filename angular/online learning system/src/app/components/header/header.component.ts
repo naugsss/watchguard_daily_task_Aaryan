@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private cartService: cartService
   ) {}
   ngOnInit(): void {
+    console.log('header component initialized');
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
     });

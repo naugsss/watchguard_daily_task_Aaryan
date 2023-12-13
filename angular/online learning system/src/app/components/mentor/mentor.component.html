@@ -1,4 +1,29 @@
 <div class="container">
+  <div class="mentor-earning">
+    <h2>My Earnings</h2>
+    <hr />
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Earning</th>
+      </tr>
+      <tr *ngFor="let mentor of mentorEarnings">
+        <td>
+          <span class="profile-logo">
+            <img
+              src="../../../assets/login_signup/profile.svg"
+              alt="profile"
+              height="40px"
+            />
+          </span>
+          <span class="mentor-name"> {{ mentor.name }} </span>
+        </td>
+        <td>{{ mentor.course_name }}</td>
+        <td>₹ {{ mentor.earning }}</td>
+      </tr>
+    </table>
+  </div>
   <div class="add-course">
     <h1>Add a new course</h1>
     <hr />
