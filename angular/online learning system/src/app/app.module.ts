@@ -21,6 +21,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminCoursesComponent } from './components/admin/admin-courses/admin-courses.component';
 import { AdminMentorComponent } from './components/admin/admin-mentor/admin-mentor.component';
 import { MentorComponent } from './components/mentor/mentor.component';
+import { CoursePreviewComponent } from './components/courses/course-preview/course-preview.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MentorComponent } from './components/mentor/mentor.component';
     AdminCoursesComponent,
     AdminMentorComponent,
     MentorComponent,
+    CoursePreviewComponent,
   ],
   imports: [
     BrowserModule,

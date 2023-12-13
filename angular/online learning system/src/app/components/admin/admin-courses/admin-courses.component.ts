@@ -33,6 +33,15 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
     );
   }
 
+  approveCourse(course: Course) {
+    console.log(course);
+    this.courseDataService.approveCourse(course, 'approve');
+  }
+  rejectCourse(course: Course) {
+    console.log(course);
+    this.courseDataService.approveCourse(course, 'reject');
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

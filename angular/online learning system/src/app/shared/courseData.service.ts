@@ -48,11 +48,11 @@ export class CourseDataService {
     );
   }
 
-  approveCourse(course: Course) {
+  approveCourse(course: Course, approval_status: string) {
     return this.http
       .put('http://127.0.0.1:8000/courses', {
         course_name: course.name,
-        approval_status: 'approve',
+        approval_status: approval_status,
       })
       .subscribe({
         next: (response) => {
@@ -62,6 +62,32 @@ export class CourseDataService {
             this.toast.info({
               detail: 'Course approved successfully',
               summary: 'Now course is available for purchase',
+            });
+          } else if (response['message'] === 'Course rejected') {
+            this.toast.info({
+              detail: 'Course rejected successfully',
+            });
+          }
+        },
+      });
+  }
+
+  addMentor(mentorName: string) {
+    this.http
+      .post('http://127.0.0.1:8000/courses/', {
+        username: mentorName,
+      })
+      .subscribe({
+        next: (response) => {
+          if (response['message'] === 'No such username exists.') {
+            this.toast.warning({
+              detail: 'No such user exists.',
+              summary: 'Visit my learning section to access the course',
+            });
+          } else {
+            this.toast.success({
+              detail: response['message'],
+              summary: 'Visit my learning section to access the course',
             });
           }
         },
@@ -78,9 +104,6 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
-          console.log('response');
-          console.log(response);
-          console.log(response['message']);
           if (
             response['message'] === 'Course approval request sent to admin.'
           ) {
@@ -99,7 +122,6 @@ export class CourseDataService {
           }
         },
         error: (error) => {
-          console.log(error.error.error.code);
           if (error.error.error.code === 403) {
             this.toast.error({
               detail: 'You are not allowed to add a course',

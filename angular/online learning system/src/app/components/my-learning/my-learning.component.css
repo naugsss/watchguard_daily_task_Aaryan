@@ -3,6 +3,10 @@
   flex-wrap: wrap;
 }
 
+hr {
+  margin: 0;
+}
+
 .container {
   margin: 50px;
   width: 100%;

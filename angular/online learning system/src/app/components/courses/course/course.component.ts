@@ -25,11 +25,6 @@ export class CourseComponent {
     this.cartService.addToCart(course);
   }
 
-  approveCourse(course: Course) {
-    console.log(course);
-    this.CourseDataService.approveCourse(course);
-  }
-
   get filledStars(): number {
     return Math.floor(this.course.rating);
   }

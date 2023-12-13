@@ -45,7 +45,7 @@ select {
 }
 
 hr {
-  margin: none;
+  margin: 0;
   width: 80vw;
 }
 

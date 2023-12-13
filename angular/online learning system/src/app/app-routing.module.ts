@@ -10,6 +10,7 @@ import { AuthGuard } from './components/login/auth.guard';
 import { MyLearningComponent } from './components/my-learning/my-learning.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MentorComponent } from './components/mentor/mentor.component';
+import { CoursePreviewComponent } from './components/courses/course-preview/course-preview.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,10 @@ const routes: Routes = [
     path: 'courses',
     component: CoursesComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'courses/:courseName',
+    component: CoursePreviewComponent,
   },
   { path: 'admin', component: AdminComponent },
   { path: 'mentor', component: MentorComponent },

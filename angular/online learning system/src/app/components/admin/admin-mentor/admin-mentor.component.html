@@ -3,8 +3,14 @@
     <h2>Add a new mentor</h2>
     <hr />
     <div class="add-new-mentor">
-      <input type="text" placeholder="Enter mentor name" name="name" ngModel />
-      <button class="add-mentor-btn">Add Mentor</button>
+      <input
+        type="text"
+        placeholder="Enter mentor name"
+        name="name"
+        [(ngModel)]="mentorName"
+        #searchInput
+      />
+      <button class="add-mentor-btn" (click)="onButtonClicked()">Add Mentor</button>
     </div>
   </div>
   <h2>Mentor Details</h2>
