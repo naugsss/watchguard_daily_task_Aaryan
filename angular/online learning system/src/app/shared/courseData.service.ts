@@ -11,14 +11,6 @@ import { Course } from '../components/courses/course/course.model';
 export class CourseDataService {
   constructor(public http: HttpClient, private toast: NgToastService) {}
 
-  // fetchCourses() {
-  //   return this.http.get<Course[]>('http://127.0.0.1:8000/courses').pipe(
-  //     tap((response) => {
-  //       console.log(response);
-  //     })
-  //   );
-  // }
-
   fetchCourses(page: number = 1, size: number = 6) {
     const url = `http://127.0.0.1:8000/courses?page=${page}&size=${size}`;
     return this.http.get<Course[]>(url).pipe(
@@ -70,6 +62,48 @@ export class CourseDataService {
             this.toast.info({
               detail: 'Course approved successfully',
               summary: 'Now course is available for purchase',
+            });
+          }
+        },
+      });
+  }
+
+  addCourse(courseData: any) {
+    this.http
+      .post('http://127.0.0.1:8000/courses/', {
+        name: courseData.name,
+        content: courseData.video,
+        price: courseData.price,
+        duration: courseData.duration,
+      })
+      .subscribe({
+        next: (response) => {
+          console.log('response');
+          console.log(response);
+          console.log(response['message']);
+          if (
+            response['message'] === 'Course approval request sent to admin.'
+          ) {
+            this.toast.info({
+              detail: 'Course approval request sent to admin.',
+              summary: 'Please wait for the admin to approve the course',
+            });
+          } else if (
+            (response['message'] =
+              'Another course with the same name already exists. Please try again.')
+          ) {
+            this.toast.warning({
+              detail: 'Another course with the same name already exists.',
+              summary: 'Please add a course with different name',
+            });
+          }
+        },
+        error: (error) => {
+          console.log(error.error.error.code);
+          if (error.error.error.code === 403) {
+            this.toast.error({
+              detail: 'You are not allowed to add a course',
+              summary: 'Please ask mentor to do this.',
             });
           }
         },

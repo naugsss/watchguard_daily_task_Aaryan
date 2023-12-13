@@ -1,10 +1,10 @@
 .container {
-  margin: 100px;
+  margin: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: 30px;
+  margin-left: 120px;
 }
 
 .empty-cart {
@@ -34,6 +34,12 @@
   width: 60%;
   display: flex;
   flex-direction: row;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .card-img {

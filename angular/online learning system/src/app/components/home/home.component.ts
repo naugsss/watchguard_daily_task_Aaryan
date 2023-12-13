@@ -17,9 +17,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     private courseService: CourseService
   ) {}
   ngOnInit(): void {
-    this.fetchCourses(1, 3);
+    console.log('calling functions');
+    this.fetchCourses(1, 4);
     this.subscription = this.courseService.coursesList.subscribe(
       (courses: Course[]) => {
+        console.log(courses);
         this.courses = courses.slice();
       }
     );

@@ -45,4 +45,8 @@ export class CourseComponent {
   isOnAdminPage(): boolean {
     return this.router.url === '/admin';
   }
+
+  isOnCartPage(): boolean {
+    return this.router.url === '/cart';
+  }
 }

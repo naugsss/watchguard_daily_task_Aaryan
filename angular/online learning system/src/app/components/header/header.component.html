@@ -25,18 +25,23 @@
       Log In
     </button>
     <div *ngIf="isAuthenticated" class="header-right">
-      <button class="cart" routerLink="cart">
-        <span><i class="fa-solid fa-cart-shopping"></i></span> Cart
-        <span>{{ cartItemNumber }}</span>
-      </button>
-      <button class="profile" (click)="toggleProfileOptions()">
-        <img
-          class="profile-logo"
-          src="../../../assets/login_signup/profile.svg"
-          alt="profile"
-          height="40px"
-        />
-      </button>
+      <div>
+        <button class="cart" routerLink="cart">
+          <span><i class="fa-solid fa-cart-shopping"></i></span> Cart
+          <span class="cart-number" *ngIf="cartItemNumber > 0">{{
+            cartItemNumber
+          }}</span>
+        </button>
+        <button class="profile" (click)="toggleProfileOptions()">
+          <img
+            class="profile-logo"
+            src="../../../assets/login_signup/profile.svg"
+            alt="profile"
+            height="36px"
+          />
+        </button>
+      </div>
+
       <div class="profile-container" *ngIf="showProfileOptions">
         <button class="profile-btn admin" routerLink="admin">
           Admin Dashboard

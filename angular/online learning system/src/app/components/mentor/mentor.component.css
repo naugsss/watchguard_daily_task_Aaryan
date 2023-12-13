@@ -1,6 +1,5 @@
 .container {
-  margin: 100px;
-  width: 100%;
+  margin: 50px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -15,14 +14,19 @@ select {
   color: #afb2be;
   box-sizing: border-box;
   background-color: #161d29;
+  border-radius: 5px;
 }
 
 .add-new-course {
   display: flex;
-  justify-items: center;
   justify-content: center;
   align-items: center;
   gap: 45px;
+  margin-left: -100px;
+}
+
+.add-course {
+  margin-left: 70px;
 }
 
 .course-form {
@@ -40,6 +44,7 @@ select {
 
 hr {
   margin: none;
+  width: 80vw;
 }
 
 .btn {
