@@ -22,6 +22,7 @@ import { AdminCoursesComponent } from './components/admin/admin-courses/admin-co
 import { AdminMentorComponent } from './components/admin/admin-mentor/admin-mentor.component';
 import { MentorComponent } from './components/mentor/mentor.component';
 import { CoursePreviewComponent } from './components/courses/course-preview/course-preview.component';
+import { CourseContentComponent } from './components/my-learning/course-content/course-content.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CoursePreviewComponent } from './components/courses/course-preview/cour
     AdminMentorComponent,
     MentorComponent,
     CoursePreviewComponent,
+    CourseContentComponent,
   ],
   imports: [
     BrowserModule,
